@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashi Ganga Boat Tours</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="#home" class="logo">GangaRide</a>
+
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#packages">Packages</a>
+            <a href="#booking">Booking</a>
+            <a href="#safety">Safety</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">Varanasi Boat Tours</p>
+                <h1>Book your Ganga boat ride in minutes.</h1>
+                <p>
+                    Sunrise rides, Ganga Aarti views, private family boats, and shared
+                    budget tours from Dashashwamedh Ghat.
+                </p>
+                <div class="hero-actions">
+                    <a href="#booking" class="button primary">Book Now</a>
+                    <a href="tel:+919170409773" class="button secondary">Call Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="availability" aria-label="Tour availability">
+            <div class="availability-item">
+                <span>Sunrise Tour</span>
+                <strong id="sunriseSeats">20 seats</strong>
+            </div>
+            <div class="availability-item">
+                <span>Ganga Aarti Tour</span>
+                <strong id="aartiSeats">20 seats</strong>
+            </div>
+            <div class="availability-item">
+                <span>Private Boats</span>
+                <strong>On request</strong>
+            </div>
+        </section>
+
+        <section class="section" id="packages">
+            <div class="section-heading">
+                <p class="eyebrow">Choose Your Ride</p>
+                <h2>Boat ride packages</h2>
+            </div>
+
+            <div class="package-grid">
+                <article class="package-card">
+                    <img src="boat.png" alt="Traditional boats moored on the Ganga river at dawn, illuminated by golden sunrise light reflecting off calm water">
+                    <div>
+                        <h3>Morning Sunrise Ride</h3>
+                        <p>Private boat experience before the city wakes up.</p>
+                        <strong>Rs. 3,000 / boat</strong>
+                        <button type="button" data-tour="sunrise">Select</button>
+                    </div>
+                </article>
+
+                <article class="package-card">
+                    <img src="ganga-arti.jpg" alt="Sacred Ganga Aarti ceremony at Varanasi ghats in evening light, with oil lamps glowing and priests performing rituals on stone steps above the river">
+                    <div>
+                        <h3>Evening Ganga Aarti</h3>
+                        <p>Watch the famous Aarti ceremony from the river.</p>
+                        <strong>Rs. 3,500 / boat</strong>
+                        <button type="button" data-tour="aarti">Select</button>
+                    </div>
+                </article>
+
+                <article class="package-card">
+                    <img src="private.jpg" alt="Spacious private motorized boat on the Ganga river carrying passengers, with comfortable seating and river scenery in background">
+                    <div>
+                        <h3>Private Motor Boat</h3>
+                        <p>Comfortable family and group tour with flexible timing.</p>
+                        <strong>Rs. 3,000 - Rs. 6,000</strong>
+                        <button type="button" data-tour="private">Select</button>
+                    </div>
+                </article>
+
+                <article class="package-card">
+                    <img src="cruise.jpg" alt="Alaknanda cruise boat">
+                    <div>
+                        <h3>Alaknanda Cruise</h3>
+                        <p>Premium shared cruise seats for morning or evening.</p>
+                        <strong>From Rs. 700 / person</strong>
+                        <button type="button" data-tour="cruise">Select</button>
+                    </div>
+                </article>
+                <article class="package-card">
+                    <img src="party.avif" alt="Comfortable luxury party boat on the Ganga river with spacious seating, music system, and festive atmosphere for celebrations and special occasions">
+                    <div>
+                        <h3>Luxury party boat</h3>
+                        <p>Premium private boat for special occasions and celebrations.</p>
+                        <strong>From Rs. 5,000 / person</strong>
+                        <button type="button" data-tour="cruise">Select</button>
+                    </div>
+                </article>
+                <article class="package-card">
+                    <img src="cars.avif" alt="Premium air-conditioned coach providing convenient transport to and from cruise departure point at Dashashwamedh Ghat">
+                    <div>
+                        <h3> Car Rentals Services</h3>
+                        <p>Airport Transfer, Local Sightseeing,Outstation Tours & Pilgrimage Trips</p>
+                        <strong>From Rs. 1,500 / day</strong>
+                        <button type="button" data-tour="cruise">Select</button>
+                    </div>
+                </article>
+                <article class="package-card">
+                    <img src="hotel.jpg" alt="Comfortable hotel room with modern amenities, clean bedding, and peaceful ambiance for guest accommodation in Varanasi">
+                    <div>
+                        <h3>Hotel Booking</h3>
+                        <p>Comfortable stay with all amenities included.</p>
+                        <strong>From Rs. 2,000 / night</strong>
+                        <button type="button" data-tour="hotel">Select</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="booking-section" id="booking">
+            <div class="booking-copy">
+                <p class="eyebrow">Reserve Your Seat</p>
+                <h2>Quick booking</h2>
+                <p>
+                    Submit your details and we will open WhatsApp with your booking
+                    request ready to send.
+                </p>
+                <ul>
+                    <li>Life jackets included</li>
+                    <li>Licensed local boatmen</li>
+                    <li>Cash or UPI available</li>
+                </ul>
+            </div>
+
+            <form class="booking-form" id="bookingForm">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="phone">Mobile number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+
+                <label for="tourType">Tour type</label>
+                <select id="tourType" name="tourType" required>
+                    <option value="">Select tour</option>
+                    <option value="sunrise">Morning Sunrise Ride</option>
+                    <option value="aarti">Evening Ganga Aarti</option>
+                    <option value="private">Private Motor Boat</option>
+                    <option value="cruise">Alaknanda Cruise</option>
+                </select>
+
+                <div class="form-row">
+                    <div>
+                        <label for="rideDate">Date</label>
+                        <input type="date" id="rideDate" name="rideDate" required>
+                    </div>
+                    <div>
+                        <label for="rideTime">Time</label>
+                        <input type="time" id="rideTime" name="rideTime" required>
+                    </div>
+                </div>
+
+                <label for="guests">Guests</label>
+                <input type="number" id="guests" name="guests" min="1" max="20" value="2" required>
+
+                <fieldset>
+                    <legend>Payment method</legend>
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="UPI" required>
+                        UPI
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment" value="Cash on arrival">
+                        Cash on arrival
+                    </label>
+                </fieldset>
+                <p class="upi-note" id="upiNote" hidden>UPI NO. 9170409773</p>
+
+                <button type="submit" class="submit-button">Confirm Booking</button>
+                <p class="form-message" id="formMessage" role="status">No booking yet.</p>
+            </form>
+        </section>
+
+        <section class="section safety-section" id="safety">
+            <div class="section-heading">
+                <p class="eyebrow">Safety First</p>
+                <h2>Prepared for every ride</h2>
+            </div>
+
+            <div class="safety-grid">
+                <article>
+                    <h3>Life jackets</h3>
+                    <p>Certified life jackets are available for every passenger.</p>
+                </article>
+                <article>
+                    <h3>Experienced boatmen</h3>
+                    <p>Rides are handled by trained local operators.</p>
+                </article>
+                <article>
+                    <h3>Weather checks</h3>
+                    <p>Trips may be delayed when river or weather conditions are unsafe.</p>
+                </article>
+                <article>
+                    <h3>Passenger capacity</h3>
+                    <p>Boats follow safe passenger limits for each ride.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div>
+                <p class="eyebrow">Contact</p>
+                <h2>Start from Dashashwamedh Ghat</h2>
+            </div>
+            <div class="contact-details">
+                <a href="tel:+919170409773">+91 9170409773</a>
+                <span>Dashashwamedh Ghat, Varanasi</span>
+                <span>Open daily: 5:00 AM - 9:00 PM</span>
+            </div>
+        </section>
+    </main>
+
+    <a class="whatsapp" href="https://wa.me/919170409773" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <path d="M16.02 4C9.4 4 4.02 9.26 4.02 15.72c0 2.06.56 4.06 1.62 5.82L4 28l6.68-1.7a12.2 12.2 0 0 0 5.34 1.22c6.62 0 12-5.26 12-11.8S22.64 4 16.02 4Zm0 21.5c-1.72 0-3.42-.44-4.9-1.28l-.36-.2-3.96 1 1.06-3.78-.24-.38a9.53 9.53 0 0 1-1.52-5.14c0-5.36 4.44-9.72 9.92-9.72s9.92 4.36 9.92 9.72-4.44 9.78-9.92 9.78Zm5.44-7.3c-.3-.14-1.76-.84-2.04-.94-.28-.1-.48-.14-.68.14-.2.3-.78.94-.96 1.12-.18.2-.36.22-.66.08-.3-.14-1.26-.45-2.4-1.44-.88-.78-1.48-1.74-1.66-2.04-.18-.3-.02-.46.14-.6.14-.14.3-.36.46-.54.14-.18.2-.3.3-.5.1-.2.04-.38-.02-.52-.08-.14-.68-1.6-.94-2.2-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.04 1-1.04 2.44s1.08 2.84 1.22 3.04c.14.2 2.12 3.16 5.14 4.42.72.3 1.28.48 1.72.62.72.22 1.38.18 1.9.1.58-.08 1.76-.7 2.02-1.38.24-.68.24-1.26.16-1.38-.08-.12-.28-.2-.58-.34Z" />
+        </svg>
+    </a>
+
+    <div class="payment-modal" id="paymentModal" hidden>
+        <div class="payment-window" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
+            <button class="payment-close" type="button" id="paymentClose" aria-label="Close payment window">×</button>
+            <p class="eyebrow">UPI Payment</p>
+            <h2 id="paymentTitle">Pay with UPI</h2>
+            <p>Use this UPI number to complete your payment.</p>
+            <strong>UPI NO. 9170409773</strong>
+            <div class="payment-options" aria-label="UPI payment options">
+                <a href="upi://pay?pa=9170409773&pn=Kashi%20Ganga%20Boat%20Tours" target="_blank" rel="noreferrer">Google Pay</a>
+                <a href="upi://pay?pa=9170409773&pn=Kashi%20Ganga%20Boat%20Tours" target="_blank" rel="noreferrer">PhonePe</a>
+                <a href="upi://pay?pa=9170409773&pn=Kashi%20Ganga%20Boat%20Tours" target="_blank" rel="noreferrer">Paytm</a>
+                <a href="upi://pay?pa=9170409773&pn=Kashi%20Ganga%20Boat%20Tours" target="_blank" rel="noreferrer">BHIM UPI</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
