@@ -3,12 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kashi Ganga Boat Tours</title>
+    <title>Kashi Ganga Boat Tours | Varanasi Boat Booking, Cruise, Car & Hotel</title>
+    <meta name="description" content="Book premium Varanasi boat rides, Ganga Aarti boat tours, sunrise rides, private boats, Alaknanda Cruise, rental cars, hotel booking, Kashi Vishwanath Temple tours, Sarnath tours and airport transfers.">
+    <meta property="og:title" content="Kashi Ganga Boat Tours | Premium Varanasi Travel Booking">
+    <meta property="og:description" content="Trusted boat booking, cruise, hotel, rental car and local tour services in Varanasi with licensed operators and 24/7 support.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="boat-ride.jpg">
+    <meta property="og:locale" content="en_IN">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Kashi Ganga Boat Tours",
+        "alternateName": "GangaRide",
+        "description": "Boat booking, cab booking, hotel booking and local tour services in Varanasi.",
+        "telephone": "+91 9170409773",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dashashwamedh Ghat",
+            "addressLocality": "Varanasi",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN"
+        },
+        "areaServed": "Varanasi",
+        "priceRange": "Rs. 700 - Rs. 6000"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="site-header">
-        <a href="#home" class="logo">GangaRide</a>
+        <a href="#home" class="logo" aria-label="GangaRide home">
+            <span>GangaRide</span>
+            <small>Varanasi Tours</small>
+        </a>
 
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
             <span></span>
@@ -18,30 +49,93 @@
 
         <nav class="site-nav" aria-label="Main navigation">
             <a href="#home">Home</a>
-            <a href="#packages">Packages</a>
+            <a href="#packages">Boat Packages</a>
             <a href="#booking">Booking</a>
+            <a href="#availability">Availability</a>
+            <a href="#cab-booking">Cab</a>
+            <a href="#hotel-booking">Hotels</a>
+            <a href="#tour-packages">Tours</a>
+            <a href="#gallery">Gallery</a>
             <a href="#safety">Safety</a>
+            <a href="#rental-car">Rental Car</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main>
+        <!-- ===== HERO SECTION ===== -->
         <section class="hero" id="home">
+            <div class="hero-slider" aria-hidden="true">
+                <span class="hero-slide is-active" style="background-image: url('boat-ride.jpg');"></span>
+                <span class="hero-slide" style="background-image: url('ganga-arti.jpg');"></span>
+                <span class="hero-slide" style="background-image: url('cruise.jpg');"></span>
+            </div>
+            <div class="particles-bg" aria-hidden="true"></div>
             <div class="hero-content">
-                <p class="eyebrow">Varanasi Boat Tours</p>
+                <p class="eyebrow">Varanasi Boat Tours & Travel Services</p>
                 <h1>Book your Ganga boat ride in minutes.</h1>
                 <p>
-                    Sunrise rides, Ganga Aarti views, private family boats, and shared
-                    budget tours from Dashashwamedh Ghat.
+                    Sunrise rides, Ganga Aarti views, private family boats, luxury bajra,
+                    Alaknanda Cruise, rental cars, hotel stays and guided Kashi tours.
                 </p>
                 <div class="hero-actions">
                     <a href="#booking" class="button primary">Book Now</a>
                     <a href="tel:+919170409773" class="button secondary">Call Us</a>
+                    <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer" class="button glass">WhatsApp</a>
                 </div>
+            </div>
+            <div class="hero-dots" aria-hidden="true">
+                <button class="hero-dot is-active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="hero-panel" aria-label="Tour highlights">
+                <strong>Open daily</strong>
+                <span>5:00 AM - 9:00 PM</span>
+                <span>Dashashwamedh Ghat, Varanasi</span>
+            </div>
+            <form class="search-widget" id="searchWidget" aria-label="Quick travel search">
+                <label for="quickService">Find a service
+                    <select id="quickService">
+                        <option value="sunrise">Sunrise Boat Ride</option>
+                        <option value="aarti">Ganga Aarti Boat Ride</option>
+                        <option value="hotel">Hotel Booking</option>
+                        <option value="car">Cab / Rental Car</option>
+                        <option value="temple">Kashi Vishwanath Tour</option>
+                    </select>
+                </label>
+                <label for="quickDate">Date
+                    <input type="date" id="quickDate">
+                </label>
+                <label for="quickGuests">Guests
+                    <input type="number" id="quickGuests" min="1" max="20" value="2">
+                </label>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <!-- ===== STATS SECTION ===== -->
+        <section class="stats-section" aria-label="Travel trust highlights">
+            <div class="stat-card reveal">
+                <strong data-count="10000">10,000+</strong>
+                <span>Happy Customers</span>
+            </div>
+            <div class="stat-card reveal">
+                <strong data-count="24">24/7</strong>
+                <span>Customer Support</span>
+            </div>
+            <div class="stat-card reveal">
+                <strong data-count="100">100%</strong>
+                <span>Local Tour Experts</span>
+            </div>
+            <div class="stat-card reveal">
+                <strong data-count="5">5+</strong>
+                <span>Premium Services</span>
             </div>
         </section>
 
-        <section class="availability" aria-label="Tour availability">
+        <!-- ===== AVAILABILITY ===== -->
+        <section class="availability" id="availability" aria-label="Tour availability">
             <div class="availability-item">
                 <span>Sunrise Tour</span>
                 <strong id="sunriseSeats">20 seats</strong>
@@ -56,16 +150,76 @@
             </div>
         </section>
 
-        <section class="section" id="packages">
+        <!-- ===== FEATURED SERVICES ===== -->
+        <section class="section featured-section" aria-labelledby="featured-title">
             <div class="section-heading">
-                <p class="eyebrow">Choose Your Ride</p>
-                <h2>Boat ride packages</h2>
+                <p class="eyebrow">Featured Services</p>
+                <h2 id="featured-title">Everything for a smooth Varanasi visit</h2>
+            </div>
+            <div class="feature-grid">
+                <article class="reveal">
+                    <span>01</span>
+                    <h3>Sunrise Boat Ride</h3>
+                    <p>Peaceful early-morning ride along the ghats with fixed 5:30 AM timing.</p>
+                </article>
+                <article class="reveal">
+                    <span>02</span>
+                    <h3>Ganga Aarti Boat Ride</h3>
+                    <p>River-view seating for the evening ceremony near Dashashwamedh Ghat.</p>
+                </article>
+                <article class="reveal">
+                    <span>03</span>
+                    <h3>Private Boat Booking</h3>
+                    <p>Flexible family, couple and group rides with local boat operators.</p>
+                </article>
+                <article class="reveal">
+                    <span>04</span>
+                    <h3>Rental Car & Hotel Booking</h3>
+                    <p>Airport transfer, local sightseeing, Sarnath tour and comfortable stays.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== POPULAR DESTINATIONS ===== -->
+        <section class="section destinations-section" aria-labelledby="destinations-title">
+            <div class="section-heading">
+                <p class="eyebrow">Popular Destinations</p>
+                <h2 id="destinations-title">Add local tours to your booking</h2>
+            </div>
+            <div class="destination-grid">
+                <article class="reveal-scale">
+                    <h3>Kashi Vishwanath Temple Tour</h3>
+                    <p>Guided darshan support, temple route planning and nearby heritage walk.</p>
+                    <button type="button" data-tour="temple">Book Tour</button>
+                </article>
+                <article class="reveal-scale">
+                    <h3>Sarnath Tour</h3>
+                    <p>Comfortable half-day trip to Dhamek Stupa, museum area and Buddhist sites.</p>
+                    <button type="button" data-tour="sarnath">Book Tour</button>
+                </article>
+                <article class="reveal-scale">
+                    <h3>Airport Transfer</h3>
+                    <p>Reliable pickup and drop from Lal Bahadur Shastri International Airport.</p>
+                    <button type="button" data-tour="airport">Book Transfer</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== BOAT PACKAGES ===== -->
+        <section class="section" id="packages">
+            <div class="section-heading split-heading">
+                <div>
+                    <p class="eyebrow">Choose Your Ride</p>
+                    <h2>Boat ride packages</h2>
+                </div>
+                <p>Professional packages for sunrise views, evening Aarti, private rides, cruise seats and luxury river experiences.</p>
             </div>
 
             <div class="package-grid">
-                <article class="package-card">
-                    <img src="boat.png" alt="Traditional boats moored on the Ganga river at dawn, illuminated by golden sunrise light reflecting off calm water">
+                <article class="package-card reveal-scale">
+                    <img src="boat.png" alt="Traditional boats moored on the Ganga river at dawn in Varanasi" loading="lazy">
                     <div>
+                        <span class="tag">Best for sunrise</span>
                         <h3>Morning Sunrise Ride</h3>
                         <p>Private boat experience before the city wakes up.</p>
                         <strong>Rs. 3,000 / boat</strong>
@@ -73,9 +227,10 @@
                     </div>
                 </article>
 
-                <article class="package-card">
-                    <img src="ganga-arti.jpg" alt="Sacred Ganga Aarti ceremony at Varanasi ghats in evening light, with oil lamps glowing and priests performing rituals on stone steps above the river">
+                <article class="package-card reveal-scale">
+                    <img src="ganga-arti.jpg" alt="Ganga Aarti ceremony at Varanasi ghats viewed from the river" loading="lazy">
                     <div>
+                        <span class="tag">Most popular</span>
                         <h3>Evening Ganga Aarti</h3>
                         <p>Watch the famous Aarti ceremony from the river.</p>
                         <strong>Rs. 3,500 / boat</strong>
@@ -83,9 +238,10 @@
                     </div>
                 </article>
 
-                <article class="package-card">
-                    <img src="private.jpg" alt="Spacious private motorized boat on the Ganga river carrying passengers, with comfortable seating and river scenery in background">
+                <article class="package-card reveal-scale">
+                    <img src="private.jpg" alt="Private motor boat on the Ganga river for family and group bookings" loading="lazy">
                     <div>
+                        <span class="tag">Private tour</span>
                         <h3>Private Motor Boat</h3>
                         <p>Comfortable family and group tour with flexible timing.</p>
                         <strong>Rs. 3,000 - Rs. 6,000</strong>
@@ -93,36 +249,43 @@
                     </div>
                 </article>
 
-                <article class="package-card">
-                    <img src="cruise.jpg" alt="Alaknanda cruise boat">
+                <article class="package-card reveal-scale">
+                    <img src="cruise.jpg" alt="Alaknanda cruise boat in Varanasi for premium shared river rides" loading="lazy">
                     <div>
+                        <span class="tag">Premium cruise</span>
                         <h3>Alaknanda Cruise</h3>
                         <p>Premium shared cruise seats for morning or evening.</p>
                         <strong>From Rs. 700 / person</strong>
                         <button type="button" data-tour="cruise">Select</button>
                     </div>
                 </article>
-                <article class="package-card">
-                    <img src="party.avif" alt="Comfortable luxury party boat on the Ganga river with spacious seating, music system, and festive atmosphere for celebrations and special occasions">
+
+                <article class="package-card reveal-scale">
+                    <img src="party.avif" alt="Luxury bajra and party boat on the Ganga river for celebrations" loading="lazy">
                     <div>
-                        <h3>Luxury party boat</h3>
+                        <span class="tag">Luxury Bajra</span>
+                        <h3>Luxury Party Boat</h3>
                         <p>Premium private boat for special occasions and celebrations.</p>
                         <strong>From Rs. 5,000 / person</strong>
-                        <button type="button" data-tour="cruise">Select</button>
+                        <button type="button" data-tour="luxury">Select</button>
                     </div>
                 </article>
-                <article class="package-card">
-                    <img src="cars.avif" alt="Premium air-conditioned coach providing convenient transport to and from cruise departure point at Dashashwamedh Ghat">
+
+                <article class="package-card reveal-scale" id="rental-car">
+                    <img src="cars.avif" alt="Air-conditioned rental car service for Varanasi airport transfer and sightseeing" loading="lazy">
                     <div>
-                        <h3> Car Rentals Services</h3>
-                        <p>Airport Transfer, Local Sightseeing,Outstation Tours & Pilgrimage Trips</p>
+                        <span class="tag">Airport transfer</span>
+                        <h3>Rental Car Service</h3>
+                        <p>Airport transfer, local sightseeing, outstation tours and pilgrimage trips.</p>
                         <strong>From Rs. 1,500 / day</strong>
-                        <button type="button" data-tour="cruise">Select</button>
+                        <button type="button" data-tour="car">Select</button>
                     </div>
                 </article>
-                <article class="package-card">
-                    <img src="hotel.jpg" alt="Comfortable hotel room with modern amenities, clean bedding, and peaceful ambiance for guest accommodation in Varanasi">
+
+                <article class="package-card reveal-scale" id="hotel-service-card">
+                    <img src="hotel.jpg" alt="Comfortable hotel room in Varanasi for family and pilgrimage stays" loading="lazy">
                     <div>
+                        <span class="tag">Verified stays</span>
                         <h3>Hotel Booking</h3>
                         <p>Comfortable stay with all amenities included.</p>
                         <strong>From Rs. 2,000 / night</strong>
@@ -132,6 +295,206 @@
             </div>
         </section>
 
+        <!-- ===== HOTEL BOOKING SECTION ===== -->
+        <section class="section hotel-section" id="hotel-booking" aria-labelledby="hotel-title">
+            <div class="section-heading split-heading">
+                <div>
+                    <p class="eyebrow">Verified Properties</p>
+                    <h2 id="hotel-title">Advanced hotel booking</h2>
+                </div>
+                <p>Choose budget, deluxe, premium or luxury stays with room types, amenities and estimated stay cost.</p>
+            </div>
+
+            <!-- Hotel Comparison Cards -->
+            <div class="hotel-comparison-grid">
+                <div class="hotel-compare-card">
+                    <div class="price-tag">Rs. 2,000 <small>/ night</small></div>
+                    <h3>Ganga View Budget Stay</h3>
+                    <div class="rating-stars">★★★★☆</div>
+                    <ul class="amenity-list">
+                        <li>Free WiFi</li>
+                        <li>Air Conditioning</li>
+                        <li>Family Rooms</li>
+                        <li>Near Ghats</li>
+                    </ul>
+                    <button type="button" data-hotel-select data-hotel-name="Ganga View Budget Stay" data-hotel-price="2000">Choose Hotel</button>
+                </div>
+                <div class="hotel-compare-card recommended">
+                    <span class="recommended-badge">Best Value</span>
+                    <div class="price-tag">Rs. 3,200 <small>/ night</small></div>
+                    <h3>Dashashwamedh Deluxe Inn</h3>
+                    <div class="rating-stars">★★★★½</div>
+                    <ul class="amenity-list">
+                        <li>Breakfast Included</li>
+                        <li>Elevator Access</li>
+                        <li>Air Conditioning</li>
+                        <li>Temple Route Support</li>
+                    </ul>
+                    <button type="button" data-hotel-select data-hotel-name="Dashashwamedh Deluxe Inn" data-hotel-price="3200">Choose Hotel</button>
+                </div>
+                <div class="hotel-compare-card">
+                    <div class="price-tag">Rs. 5,000 <small>/ night</small></div>
+                    <h3>Kashi Premium Residency</h3>
+                    <div class="rating-stars">★★★★★</div>
+                    <ul class="amenity-list">
+                        <li>Restaurant On-site</li>
+                        <li>Parking Facility</li>
+                        <li>Large Rooms</li>
+                        <li>Travel Desk</li>
+                    </ul>
+                    <button type="button" data-hotel-select data-hotel-name="Kashi Premium Residency" data-hotel-price="5000">Choose Hotel</button>
+                </div>
+                <div class="hotel-compare-card">
+                    <div class="price-tag">Rs. 7,500 <small>/ night</small></div>
+                    <h3>Luxury Heritage Stay</h3>
+                    <div class="rating-stars">★★★★★</div>
+                    <ul class="amenity-list">
+                        <li>River-view Rooms</li>
+                        <li>Concierge Service</li>
+                        <li>Premium Transport</li>
+                        <li>Heritage Decor</li>
+                    </ul>
+                    <button type="button" data-hotel-select data-hotel-name="Luxury Heritage Stay" data-hotel-price="7500">Choose Hotel</button>
+                </div>
+            </div>
+
+            <!-- Original Hotel Grid (preserved) -->
+            <div class="hotel-grid" style="margin-top: 2rem;">
+                <article class="hotel-card" data-hotel-price="2000" data-hotel-name="Ganga View Budget Stay">
+                    <img src="hotel.jpg" loading="lazy" alt="Budget hotel room in Varanasi with clean bedding">
+                    <div><span class="tag">Budget Hotels</span><h3>Ganga View Budget Stay</h3><p>Rating: 4.3/5</p><p>WiFi, AC, family rooms, near ghats</p><strong>Rs. 2,000 / night</strong><em>Available today</em><button type="button" data-hotel-select>Choose Hotel</button></div>
+                </article>
+                <article class="hotel-card" data-hotel-price="3200" data-hotel-name="Dashashwamedh Deluxe Inn">
+                    <img src="hotel.jpg" loading="lazy" alt="Deluxe Varanasi hotel room with modern amenities">
+                    <div><span class="tag">Deluxe Hotels</span><h3>Dashashwamedh Deluxe Inn</h3><p>Rating: 4.5/5</p><p>Breakfast, lift, AC, temple route support</p><strong>Rs. 3,200 / night</strong><em>Limited rooms</em><button type="button" data-hotel-select>Choose Hotel</button></div>
+                </article>
+                <article class="hotel-card" data-hotel-price="5000" data-hotel-name="Kashi Premium Residency">
+                    <img src="hotel.jpg" loading="lazy" alt="Premium hotel room for Varanasi family stays">
+                    <div><span class="tag">Premium Hotels</span><h3>Kashi Premium Residency</h3><p>Rating: 4.7/5</p><p>Restaurant, parking, large rooms, travel desk</p><strong>Rs. 5,000 / night</strong><em>Available</em><button type="button" data-hotel-select>Choose Hotel</button></div>
+                </article>
+                <article class="hotel-card" data-hotel-price="7500" data-hotel-name="Luxury Heritage Stay">
+                    <img src="hotel.jpg" loading="lazy" alt="Luxury Varanasi hotel stay with premium room amenities">
+                    <div><span class="tag">Luxury Hotels</span><h3>Luxury Heritage Stay</h3><p>Rating: 4.8/5</p><p>River-view rooms, concierge, premium transport</p><strong>Rs. 7,500 / night</strong><em>On request</em><button type="button" data-hotel-select>Choose Hotel</button></div>
+                </article>
+            </div>
+
+            <form class="calculator-card" id="hotelCalculator">
+                <h3>Hotel stay estimate</h3>
+                <input type="hidden" id="hotelName" value="Ganga View Budget Stay">
+                <input type="hidden" id="hotelRate" value="2000">
+                <div class="form-row">
+                    <div><label for="checkIn">Check-in date</label><input type="date" id="checkIn"></div>
+                    <div><label for="checkOut">Check-out date</label><input type="date" id="checkOut"></div>
+                </div>
+                <div class="form-row three">
+                    <div><label for="hotelAdults">Adults</label><input type="number" id="hotelAdults" min="1" value="2"></div>
+                    <div><label for="hotelChildren">Children (5-12 years)</label><input type="number" id="hotelChildren" min="0" value="0"></div>
+                    <div><label for="hotelInfants">Infants (0-4 years)</label><input type="number" id="hotelInfants" min="0" value="0"></div>
+                </div>
+                <div class="form-row">
+                    <div><label for="roomType">Room type</label><select id="roomType"><option>Standard Room</option><option>Deluxe Room</option><option>Family Suite</option></select></div>
+                    <div><label for="rooms">Number of rooms</label><input type="number" id="rooms" min="1" value="1"></div>
+                </div>
+                <label for="guestDetails">Guest details</label>
+                <textarea id="guestDetails" rows="3" placeholder="Guest names, arrival time, special room preference"></textarea>
+                <div class="booking-summary"><strong>Hotel Summary</strong><span id="hotelSummary">1 night, 2 guests, Rs. 2,000 estimated.</span></div>
+                <a class="button primary" id="hotelWhatsApp" href="https://wa.me/919170409773" target="_blank" rel="noreferrer">Request Hotel</a>
+            </form>
+        </section>
+
+        <!-- ===== CAB BOOKING SECTION ===== -->
+        <section class="section cab-section" id="cab-booking" aria-labelledby="cab-title">
+            <div class="section-heading split-heading">
+                <div>
+                    <p class="eyebrow">Cab Booking</p>
+                    <h2 id="cab-title">Airport, local and outstation travel</h2>
+                </div>
+                <p>Sedan, SUV, Innova, Innova Crysta, Tempo Traveller and luxury car options for every group size.</p>
+            </div>
+            <div class="cab-layout">
+                <div class="vehicle-grid">
+                    <button type="button" data-vehicle="Sedan" data-capacity="4" data-price="1500">Sedan<span>4 seats · 2 luggage</span></button>
+                    <button type="button" data-vehicle="SUV" data-capacity="6" data-price="2200">SUV<span>6 seats · 3 luggage</span></button>
+                    <button type="button" data-vehicle="Innova" data-capacity="7" data-price="3000">Innova<span>7 seats · 3 luggage</span></button>
+                    <button type="button" data-vehicle="Innova Crysta" data-capacity="7" data-price="4000">Innova Crysta<span>7 seats · 4 luggage</span></button>
+                    <button type="button" data-vehicle="Tempo Traveller" data-capacity="12" data-price="6500">Tempo Traveller<span>12 seats · 6 luggage</span></button>
+                    <button type="button" data-vehicle="Luxury Car" data-capacity="4" data-price="6000">Luxury Car<span>4 seats · 2 luggage</span></button>
+                </div>
+                <form class="calculator-card" id="cabCalculator">
+                    <h3>Cab trip estimate</h3>
+                    <input type="hidden" id="vehicleName" value="Sedan">
+                    <input type="hidden" id="vehicleCapacity" value="4">
+                    <input type="hidden" id="vehicleRate" value="1500">
+                    <label for="cabOption">Booking option</label>
+                    <select id="cabOption"><option>Airport Pickup</option><option>Airport Drop</option><option>Local Sightseeing</option><option>Outstation Tour</option></select>
+                    <div class="form-row">
+                        <div><label for="pickupDate">Pickup date</label><input type="date" id="pickupDate"></div>
+                        <div><label for="pickupTime">Pickup time</label><input type="time" id="pickupTime"></div>
+                    </div>
+                    <div class="form-row">
+                        <div><label for="cabPickup">Pickup location</label><input type="text" id="cabPickup" placeholder="Airport, hotel or station"></div>
+                        <div><label for="cabDrop">Drop location</label><input type="text" id="cabDrop" placeholder="Hotel, ghat, city or outstation"></div>
+                    </div>
+                    <div class="form-row four">
+                        <div><label for="cabAdults">Adults</label><input type="number" id="cabAdults" min="1" value="2"></div>
+                        <div><label for="cabChildren">Children</label><input type="number" id="cabChildren" min="0" value="0"></div>
+                        <div><label for="cabInfants">Infants</label><input type="number" id="cabInfants" min="0" value="0"></div>
+                        <div><label for="luggage">Luggage</label><input type="number" id="luggage" min="0" value="1"></div>
+                    </div>
+                    <div class="booking-summary"><strong>Trip Summary</strong><span id="cabSummary">Sedan, 4 seats, Rs. 1,500 estimated.</span></div>
+                    <a class="button primary" id="cabWhatsApp" href="https://wa.me/919170409773" target="_blank" rel="noreferrer">Request Cab</a>
+                </form>
+            </div>
+        </section>
+
+        <!-- ===== LUXURY CRUISE SECTION ===== -->
+        <section class="section luxury-cruise-section" aria-labelledby="cruise-title">
+            <div class="section-heading">
+                <p class="eyebrow">Luxury River Experience</p>
+                <h2 id="cruise-title">Alaknanda Luxury Cruise</h2>
+                <p>Premium river cruising with world-class amenities, panoramic views, and exceptional service on the Ganga.</p>
+            </div>
+            <div class="cruise-features">
+                <div class="cruise-feature reveal">
+                    <div class="feature-icon">🛥️</div>
+                    <h3>Premium Cabin</h3>
+                    <p>Air-conditioned upper deck with panoramic windows</p>
+                </div>
+                <div class="cruise-feature reveal">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Complimentary Refreshments</h3>
+                    <p>Tea, coffee and light snacks included with every booking</p>
+                </div>
+                <div class="cruise-feature reveal">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Live Music Evenings</h3>
+                    <p>Traditional Banarasi music performances on select cruises</p>
+                </div>
+                <div class="cruise-feature reveal">
+                    <div class="feature-icon">📸</div>
+                    <h3>Sunset Photography</h3>
+                    <p>Unobstructed views of the ghats at golden hour</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TOUR PACKAGES ===== -->
+        <section class="section tour-section" id="tour-packages" aria-labelledby="tour-package-title">
+            <div class="section-heading">
+                <p class="eyebrow">Tour Packages</p>
+                <h2 id="tour-package-title">Popular pilgrimage and sightseeing packages</h2>
+            </div>
+            <div class="tour-package-grid">
+                <article class="reveal-scale"><img src="ganga-arti.jpg" loading="lazy" alt="Kashi Vishwanath temple tour and Ganga Aarti package"><div><h3>Kashi Vishwanath Tour</h3><p>Temple route guidance with heritage walk support.</p><span>Duration: 3-4 hours</span><span>Includes guide support and pickup coordination</span><strong>From Rs. 1,500</strong><button type="button" data-tour="temple">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="car.jpg" loading="lazy" alt="Sarnath tour package from Varanasi"><div><h3>Sarnath Tour</h3><p>Visit Dhamek Stupa and nearby Buddhist landmarks.</p><span>Duration: Half day</span><span>Includes cab coordination and route planning</span><strong>From Rs. 2,500</strong><button type="button" data-tour="sarnath">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="cars.avif" loading="lazy" alt="Prayagraj tour package from Varanasi by cab"><div><h3>Prayagraj Tour</h3><p>Comfortable outstation trip for Triveni Sangam darshan.</p><span>Duration: Full day</span><span>Includes private cab and itinerary support</span><strong>From Rs. 5,500</strong><button type="button" data-tour="prayagraj">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="cars.avif" loading="lazy" alt="Ayodhya tour package from Varanasi by cab"><div><h3>Ayodhya Tour</h3><p>Private outstation tour for Ram Mandir and major sites.</p><span>Duration: Full day</span><span>Includes pickup, drop and route planning</span><strong>From Rs. 6,500</strong><button type="button" data-tour="ayodhya">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="ganga-arti.jpg" loading="lazy" alt="Ganga Aarti boat tour package in Varanasi"><div><h3>Ganga Aarti Tour</h3><p>Evening boat view for Dashashwamedh Ghat ceremony.</p><span>Duration: 1.5-2 hours</span><span>Includes boat operator and WhatsApp support</span><strong>Rs. 3,500 / boat</strong><button type="button" data-tour="aarti">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="boat.png" loading="lazy" alt="Sunrise boat tour package in Varanasi"><div><h3>Sunrise Tour</h3><p>Morning boat ride across iconic ghats before crowds.</p><span>Duration: 1-1.5 hours</span><span>Includes private boat and fixed 5:30 AM timing</span><strong>Rs. 3,000 / boat</strong><button type="button" data-tour="sunrise">Book Now</button></div></article>
+            </div>
+        </section>
+
+        <!-- ===== BOOKING FORM ===== -->
         <section class="booking-section" id="booking">
             <div class="booking-copy">
                 <p class="eyebrow">Reserve Your Seat</p>
@@ -141,41 +504,87 @@
                     request ready to send.
                 </p>
                 <ul>
-                    <li>Life jackets included</li>
-                    <li>Licensed local boatmen</li>
-                    <li>Cash or UPI available</li>
+                    <li>Life jackets available for boat passengers</li>
+                    <li>Licensed local boat operators</li>
+                    <li>Secure payments with cash or UPI available</li>
+                    <li>24/7 customer support for trip changes</li>
                 </ul>
             </div>
 
             <form class="booking-form" id="bookingForm">
+                <div class="form-title">
+                    <h3>Booking Details</h3>
+                    <span>WhatsApp confirmation</span>
+                </div>
+
                 <label for="name">Full name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
 
                 <label for="phone">Mobile number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" required>
+
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
 
                 <label for="tourType">Tour type</label>
                 <select id="tourType" name="tourType" required>
                     <option value="">Select tour</option>
                     <option value="sunrise">Morning Sunrise Ride</option>
                     <option value="aarti">Evening Ganga Aarti</option>
+                    <option value="privateBoat">Private Boat</option>
                     <option value="private">Private Motor Boat</option>
                     <option value="cruise">Alaknanda Cruise</option>
+                    <option value="luxury">Luxury Bajra Boat</option>
+                    <option value="car">Rental Car Service</option>
+                    <option value="hotel">Hotel Booking</option>
+                    <option value="temple">Kashi Vishwanath Temple Tour</option>
+                    <option value="sarnath">Sarnath Tour</option>
+                    <option value="prayagraj">Prayagraj Tour</option>
+                    <option value="ayodhya">Ayodhya Tour</option>
+                    <option value="airport">Airport Transfer</option>
                 </select>
 
                 <div class="form-row">
                     <div>
-                        <label for="rideDate">Date</label>
+                        <label for="rideDate">Tour date</label>
                         <input type="date" id="rideDate" name="rideDate" required>
                     </div>
                     <div>
-                        <label for="rideTime">Time</label>
+                        <label for="rideTime">Tour time</label>
                         <input type="time" id="rideTime" name="rideTime" required>
                     </div>
                 </div>
 
-                <label for="guests">Guests</label>
-                <input type="number" id="guests" name="guests" min="1" max="20" value="2" required>
+                <div class="form-row three">
+                    <div>
+                        <label for="adults">Adults</label>
+                        <input type="number" id="adults" name="adults" min="1" max="20" value="2" required>
+                    </div>
+                    <div>
+                        <label for="children">Children (5-12 years)</label>
+                        <input type="number" id="children" name="children" min="0" max="20" value="0">
+                    </div>
+                    <div>
+                        <label for="infants">Infants (0-4 years)</label>
+                        <input type="number" id="infants" name="infants" min="0" max="10" value="0">
+                    </div>
+                </div>
+
+                <label for="guests">Total passengers</label>
+                <input type="number" id="guests" name="guests" min="1" max="40" value="2" required readonly>
+
+                <label for="pickupLocation">Pickup location</label>
+                <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Hotel, ghat, airport, or station">
+
+                <label for="specialRequests">Special requests</label>
+                <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Preferred ghat, accessibility needs, luggage, hotel name, etc."></textarea>
+
+                <div class="booking-summary" id="bookingSummary" aria-live="polite">
+                    <strong>Booking Summary</strong>
+                    <span id="summaryTour">Select a tour to see estimate.</span>
+                    <span id="summaryPassengers">Total passengers: 2</span>
+                    <span id="summaryCost">Estimated cost: Rs. 0</span>
+                </div>
 
                 <fieldset>
                     <legend>Payment method</legend>
@@ -195,6 +604,153 @@
             </form>
         </section>
 
+        <!-- ===== GOOGLE REVIEWS SECTION ===== -->
+        <section class="section google-reviews-section" aria-labelledby="google-review-title">
+            <div class="section-heading">
+                <p class="eyebrow">Google Reviews</p>
+                <h2 id="google-review-title">What our guests say</h2>
+            </div>
+            <div class="review-grid">
+                <article class="google-review-card reveal">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">PS</div>
+                        <div>
+                            <div class="reviewer-name">Priya Sharma</div>
+                            <div class="review-date">2 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Beautiful sunrise ride and very smooth WhatsApp booking. The boatman reached on time. Highly recommended for anyone visiting Varanasi!"</p>
+                </article>
+                <article class="google-review-card reveal">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">RV</div>
+                        <div>
+                            <div class="reviewer-name">Rahul Verma</div>
+                            <div class="review-date">1 month ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The Ganga Aarti view from the river was perfect for our family. Helpful local support made the experience unforgettable."</p>
+                </article>
+                <article class="google-review-card reveal">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">AS</div>
+                        <div>
+                            <div class="reviewer-name">Ananya Singh</div>
+                            <div class="review-date">3 weeks ago</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Car pickup, hotel help and private boat booking were arranged together. Very convenient service for a stress-free trip."</p>
+                </article>
+            </div>
+            <div class="google-review-cta">
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" target="_blank" rel="noreferrer">Leave a Google Review ★</a>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS SLIDER ===== -->
+        <section class="section reviews-section" aria-labelledby="reviews-title">
+            <div class="section-heading">
+                <p class="eyebrow">Customer Reviews</p>
+                <h2 id="reviews-title">Guest experiences</h2>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <button class="testimonials-btn prev" type="button" aria-label="Previous review">‹</button>
+                <div class="testimonials-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <blockquote>"Beautiful sunrise ride and very smooth WhatsApp booking. The boatman reached on time."</blockquote>
+                        <div class="testimonial-author">Priya Sharma</div>
+                        <div class="testimonial-role">Sunrise Boat Ride</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <blockquote>"The Ganga Aarti view from the river was perfect for our family. Helpful local support."</blockquote>
+                        <div class="testimonial-author">Rahul Verma</div>
+                        <div class="testimonial-role">Ganga Aarti Boat Ride</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <blockquote>"Car pickup, hotel help and private boat booking were arranged together. Very convenient."</blockquote>
+                        <div class="testimonial-author">Ananya Singh</div>
+                        <div class="testimonial-role">Varanasi Travel Package</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <blockquote>"We booked the luxury cruise for our anniversary. The sunset views from the deck were absolutely magical."</blockquote>
+                        <div class="testimonial-author">Amit & Neha Kapoor</div>
+                        <div class="testimonial-role">Alaknanda Cruise</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <blockquote>"The hotel booking was seamless. Driver picked us from airport and dropped at hotel. Everything was well coordinated."</blockquote>
+                        <div class="testimonial-author">Vikram Joshi</div>
+                        <div class="testimonial-role">Hotel & Cab Package</div>
+                    </div>
+                </div>
+                <button class="testimonials-btn next" type="button" aria-label="Next review">›</button>
+            </div>
+        </section>
+
+        <!-- ===== TRUST STRIP ===== -->
+        <section class="trust-strip" aria-label="Trust badges">
+            <span>10,000+ Happy Customers</span>
+            <span>Licensed Boat Operators</span>
+            <span>Verified Hotels</span>
+            <span>Professional Drivers</span>
+            <span>Secure Payments</span>
+            <span>Life Jackets Available</span>
+            <span>24/7 Customer Support</span>
+            <span>Local Tour Experts</span>
+        </section>
+
+        <!-- ===== INSTAGRAM GALLERY ===== -->
+        <section class="section gallery-section" aria-labelledby="instagram-title">
+            <div class="section-heading split-heading">
+                <div>
+                    <p class="eyebrow">Instagram</p>
+                    <h2 id="instagram-title">Follow us @GangaRide</h2>
+                </div>
+                <p>Tag #GangaRide for a chance to be featured on our page.</p>
+            </div>
+            <div class="instagram-gallery">
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                    <img src="boat-ride.jpg" alt="Sunrise boat ride on the Ganga" loading="lazy">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                    <img src="ganga-arti.jpg" alt="Ganga Aarti from the river" loading="lazy">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                    <img src="cruise.jpg" alt="Alaknanda Cruise experience" loading="lazy">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                    <img src="private.jpg" alt="Private boat on the Ganga" loading="lazy">
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== GALLERY ===== -->
+        <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
+            <div class="section-heading split-heading">
+                <div>
+                    <p class="eyebrow">Gallery</p>
+                    <h2 id="gallery-title">Moments on the Ganga</h2>
+                </div>
+                <p>Real service categories shown through boat rides, Aarti views, cruise, car service and hotel stays.</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <img src="boat-ride.jpg" alt="Tourists enjoying a scenic Ganga boat ride in Varanasi" loading="lazy">
+                <img src="ganga-arti.jpg" alt="Evening Ganga Aarti from the river in Varanasi" loading="lazy">
+                <img src="cruise.jpg" alt="Alaknanda Cruise service in Varanasi" loading="lazy">
+                <img src="private.jpg" alt="Private boat booking for groups in Varanasi" loading="lazy">
+                <img src="cars.avif" alt="Rental car service for Varanasi sightseeing and airport transfer" loading="lazy">
+                <img src="hotel.jpg" alt="Hotel booking service for Varanasi visitors" loading="lazy">
+            </div>
+        </section>
+
+        <!-- ===== SAFETY ===== -->
         <section class="section safety-section" id="safety">
             <div class="section-heading">
                 <p class="eyebrow">Safety First</p>
@@ -202,25 +758,135 @@
             </div>
 
             <div class="safety-grid">
-                <article>
-                    <h3>Life jackets</h3>
+                <article class="reveal">
+                    <h3>Life Jackets Available</h3>
                     <p>Certified life jackets are available for every passenger.</p>
                 </article>
-                <article>
-                    <h3>Experienced boatmen</h3>
+                <article class="reveal">
+                    <h3>Licensed Boat Operators</h3>
                     <p>Rides are handled by trained local operators.</p>
                 </article>
-                <article>
-                    <h3>Weather checks</h3>
+                <article class="reveal">
+                    <h3>Weather Checks</h3>
                     <p>Trips may be delayed when river or weather conditions are unsafe.</p>
                 </article>
-                <article>
-                    <h3>Passenger capacity</h3>
+                <article class="reveal">
+                    <h3>Passenger Capacity</h3>
                     <p>Boats follow safe passenger limits for each ride.</p>
                 </article>
             </div>
         </section>
 
+        <!-- ===== WHY CHOOSE US ===== -->
+        <section class="section why-section" aria-labelledby="why-title">
+            <div class="section-heading">
+                <p class="eyebrow">Why Choose Us</p>
+                <h2 id="why-title">Trusted local experts for Kashi travel</h2>
+            </div>
+            <div class="why-grid">
+                <article class="reveal-scale"><strong>Secure Payments</strong><span>UPI and cash options with WhatsApp booking record.</span></article>
+                <article class="reveal-scale"><strong>Local Tour Experts</strong><span>Guidance from people who know the ghats and routes.</span></article>
+                <article class="reveal-scale"><strong>24/7 Customer Support</strong><span>Call or WhatsApp support for bookings and changes.</span></article>
+                <article class="reveal-scale"><strong>Complete Trip Services</strong><span>Boat, cruise, car, hotel and temple tour support in one place.</span></article>
+            </div>
+        </section>
+
+        <!-- ===== PAYMENT BADGES ===== -->
+        <section class="section" style="background: var(--mist); padding-top: 3rem; padding-bottom: 3rem;">
+            <div class="payment-badges">
+                <span class="payment-badge secure"><span class="badge-icon">🔒</span> Secure Booking</span>
+                <span class="payment-badge"><span class="badge-icon">💳</span> UPI Accepted</span>
+                <span class="payment-badge"><span class="badge-icon">💵</span> Cash on Arrival</span>
+                <span class="payment-badge secure"><span class="badge-icon">🛡️</span> SSL Protected</span>
+                <span class="payment-badge"><span class="badge-icon">✅</span> Verified Operators</span>
+            </div>
+        </section>
+
+        <!-- ===== FAQ ===== -->
+        <section class="section faq-section" aria-labelledby="faq-title">
+            <div class="section-heading">
+                <p class="eyebrow">FAQ</p>
+                <h2 id="faq-title">Common questions</h2>
+            </div>
+            <div class="faq-list" itemscope itemtype="https://schema.org/FAQPage">
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">How do I confirm my booking?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Fill the form, choose payment method, and send the auto-generated WhatsApp request. Our team will confirm availability.</p>
+                    </div>
+                </details>
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">Are life jackets available?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, life jackets are available for passengers on boat rides.</p>
+                    </div>
+                </details>
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">Can I book car and hotel services too?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, rental car service, airport transfer and hotel booking can be requested from the same booking form.</p>
+                    </div>
+                </details>
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">What happens in bad weather?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">For safety, rides may be delayed or rescheduled when river or weather conditions are not suitable.</p>
+                    </div>
+                </details>
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">What is the best time for a sunrise boat ride?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">The sunrise boat ride starts at 5:30 AM. Early morning gives calmer waters, softer light and peaceful views of the ghats before the crowds arrive.</p>
+                    </div>
+                </details>
+                <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+                    <summary itemprop="name">Do you offer pickup from the airport or railway station?</summary>
+                    <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+                        <p itemprop="text">Yes, we offer airport and railway station pickup services. You can book a cab or request a combined travel + hotel package.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ===== BLOG ===== -->
+        <section class="section blog-section" aria-labelledby="blog-title">
+            <div class="section-heading">
+                <p class="eyebrow">Travel Guide</p>
+                <h2 id="blog-title">Varanasi tips and updates</h2>
+            </div>
+            <div class="blog-grid">
+                <article class="reveal"><span>Boat Guide</span><h3>Best time for a sunrise boat ride in Varanasi</h3><p>Early morning gives calmer water, softer light and a peaceful view of the ghats.</p></article>
+                <article class="reveal"><span>Aarti Tips</span><h3>How to plan a Ganga Aarti boat booking</h3><p>Book ahead for evening rides, especially weekends and festival dates.</p></article>
+                <article class="reveal"><span>Local Travel</span><h3>Cab routes for Sarnath, Prayagraj and Ayodhya</h3><p>Plan pickup times around temple hours, traffic and outstation return schedules.</p></article>
+            </div>
+        </section>
+
+        <!-- ===== 24/7 SUPPORT SECTION ===== -->
+        <section class="support-section" aria-labelledby="support-title">
+            <h2 id="support-title">24/7 Customer Support</h2>
+            <p>Our team is available around the clock to help with bookings, changes, and travel advice. Call or WhatsApp us anytime.</p>
+            <div class="support-buttons">
+                <a href="tel:+919170409773">📞 Call +91 9170409773</a>
+                <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer">💬 WhatsApp Us</a>
+                <a href="mailto:support@gangaride.com">✉️ Email Support</a>
+            </div>
+        </section>
+
+        <!-- ===== MAP ===== -->
+        <section class="map-section" aria-labelledby="map-title">
+            <div class="map-copy">
+                <p class="eyebrow">Location</p>
+                <h2 id="map-title">Meet near Dashashwamedh Ghat</h2>
+                <p>Our pickup point is close to the main ghats and evening Aarti area.</p>
+            </div>
+            <iframe
+                title="Dashashwamedh Ghat location map"
+                src="https://www.google.com/maps?q=Dashashwamedh%20Ghat%20Varanasi&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
         <section class="contact-section" id="contact">
             <div>
                 <p class="eyebrow">Contact</p>
@@ -228,21 +894,42 @@
             </div>
             <div class="contact-details">
                 <a href="tel:+919170409773">+91 9170409773</a>
+                <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer">WhatsApp Booking</a>
                 <span>Dashashwamedh Ghat, Varanasi</span>
                 <span>Open daily: 5:00 AM - 9:00 PM</span>
             </div>
         </section>
     </main>
 
-    <a class="whatsapp" href="https://wa.me/919170409773" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+    <!-- ===== FLOATING ACTIONS ===== -->
+    <a class="sticky-action whatsapp" href="https://wa.me/919170409773" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
             <path d="M16.02 4C9.4 4 4.02 9.26 4.02 15.72c0 2.06.56 4.06 1.62 5.82L4 28l6.68-1.7a12.2 12.2 0 0 0 5.34 1.22c6.62 0 12-5.26 12-11.8S22.64 4 16.02 4Zm0 21.5c-1.72 0-3.42-.44-4.9-1.28l-.36-.2-3.96 1 1.06-3.78-.24-.38a9.53 9.53 0 0 1-1.52-5.14c0-5.36 4.44-9.72 9.92-9.72s9.92 4.36 9.92 9.72-4.44 9.78-9.92 9.78Zm5.44-7.3c-.3-.14-1.76-.84-2.04-.94-.28-.1-.48-.14-.68.14-.2.3-.78.94-.96 1.12-.18.2-.36.22-.66.08-.3-.14-1.26-.45-2.4-1.44-.88-.78-1.48-1.74-1.66-2.04-.18-.3-.02-.46.14-.6.14-.14.3-.36.46-.54.14-.18.2-.3.3-.5.1-.2.04-.38-.02-.52-.08-.14-.68-1.6-.94-2.2-.24-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.28.3-1.04 1-1.04 2.44s1.08 2.84 1.22 3.04c.14.2 2.12 3.16 5.14 4.42.72.3 1.28.48 1.72.62.72.22 1.38.18 1.9.1.58-.08 1.76-.7 2.02-1.38.24-.68.24-1.26.16-1.38-.08-.12-.28-.2-.58-.34Z" />
         </svg>
     </a>
+    <a class="sticky-action call-now" href="tel:+919170409773" aria-label="Call now">Call</a>
+    <a class="floating-book" href="#booking">Book Now</a>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
 
+    <nav class="mobile-bottom-nav" aria-label="Mobile quick navigation">
+        <a href="#home">Home</a>
+        <a href="#packages">Packages</a>
+        <a href="#booking">Book</a>
+        <a href="tel:+919170409773">Call</a>
+    </nav>
+
+    <!-- ===== GALLERY LIGHTBOX ===== -->
+    <div class="gallery-lightbox" id="galleryLightbox" hidden>
+        <button class="lightbox-close" type="button" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">‹</button>
+        <img src="" alt="Gallery image" id="lightboxImage">
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">›</button>
+    </div>
+
+    <!-- ===== PAYMENT MODAL ===== -->
     <div class="payment-modal" id="paymentModal" hidden>
         <div class="payment-window" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
-            <button class="payment-close" type="button" id="paymentClose" aria-label="Close payment window">×</button>
+            <button class="payment-close" type="button" id="paymentClose" aria-label="Close payment window">&times;</button>
             <p class="eyebrow">UPI Payment</p>
             <h2 id="paymentTitle">Pay with UPI</h2>
             <p>Use this UPI number to complete your payment.</p>
@@ -256,8 +943,32 @@
         </div>
     </div>
 
-    <footer>
-        <p>Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div>
+            <a href="#home" class="footer-brand">GangaRide</a>
+            <p>Premium boat booking, travel support, hotel booking and local tours in Varanasi.</p>
+        </div>
+        <div>
+            <h3>Services</h3>
+            <a href="#packages">Boat Packages</a>
+            <a href="#rental-car">Rental Car Service</a>
+            <a href="#hotel-booking">Hotel Booking</a>
+            <a href="#booking">Airport Transfer</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <a href="tel:+919170409773">+91 9170409773</a>
+            <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer">WhatsApp</a>
+            <span>Dashashwamedh Ghat, Varanasi</span>
+        </div>
+        <div>
+            <h3>Social</h3>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+        <p class="copyright">Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
