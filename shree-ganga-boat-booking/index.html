@@ -35,10 +35,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">GangaRide</div>
+        </div>
+    </div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
     <header class="site-header">
         <a href="#home" class="logo" aria-label="GangaRide home">
-            <span>GangaRide</span>
-            <small>Varanasi Tours</small>
+            <div class="logo-text">
+                <span>GangaRide</span>
+                <small>Varanasi Tours</small>
+            </div>
         </a>
 
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
@@ -51,13 +63,11 @@
             <a href="#home">Home</a>
             <a href="#packages">Boat Packages</a>
             <a href="#booking">Booking</a>
-            <a href="#availability">Availability</a>
             <a href="#cab-booking">Cab</a>
             <a href="#hotel-booking">Hotels</a>
             <a href="#tour-packages">Tours</a>
             <a href="#gallery">Gallery</a>
-            <a href="#safety">Safety</a>
-            <a href="#rental-car">Rental Car</a>
+            <a href="pages/booking-status.html">Booking Status</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -95,42 +105,60 @@
                 <span>Dashashwamedh Ghat, Varanasi</span>
             </div>
             <form class="search-widget" id="searchWidget" aria-label="Quick travel search">
-                <label for="quickService">Find a service
+                <div class="search-field">
+                    <span class="search-field-icon">🔍</span>
+                    <label for="quickService">Service</label>
                     <select id="quickService">
-                        <option value="sunrise">Sunrise Boat Ride</option>
-                        <option value="aarti">Ganga Aarti Boat Ride</option>
-                        <option value="hotel">Hotel Booking</option>
-                        <option value="car">Cab / Rental Car</option>
-                        <option value="temple">Kashi Vishwanath Tour</option>
+                        <option value="sunrise">🌅 Sunrise Boat Ride</option>
+                        <option value="aarti">🪔 Ganga Aarti Ride</option>
+                        <option value="hotel">🏨 Hotel Booking</option>
+                        <option value="car">🚗 Cab / Rental Car</option>
+                        <option value="temple">🛕 Kashi Vishwanath Tour</option>
                     </select>
-                </label>
-                <label for="quickDate">Date
+                </div>
+                <div class="search-field">
+                    <span class="search-field-icon">📅</span>
+                    <label for="quickDate">Date</label>
                     <input type="date" id="quickDate">
-                </label>
-                <label for="quickGuests">Guests
+                </div>
+                <div class="search-field">
+                    <span class="search-field-icon">👥</span>
+                    <label for="quickGuests">Guests</label>
                     <input type="number" id="quickGuests" min="1" max="20" value="2">
-                </label>
-                <button type="submit">Search</button>
+                </div>
+                <button type="submit">
+                    <span>Search</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </form>
         </section>
 
         <!-- ===== STATS SECTION ===== -->
         <section class="stats-section" aria-label="Travel trust highlights">
-            <div class="stat-card reveal">
-                <strong data-count="10000">10,000+</strong>
-                <span>Happy Customers</span>
-            </div>
-            <div class="stat-card reveal">
-                <strong data-count="24">24/7</strong>
-                <span>Customer Support</span>
-            </div>
-            <div class="stat-card reveal">
-                <strong data-count="100">100%</strong>
-                <span>Local Tour Experts</span>
-            </div>
-            <div class="stat-card reveal">
-                <strong data-count="5">5+</strong>
-                <span>Premium Services</span>
+            <div class="stats-bg-overlay"></div>
+            <div class="stats-inner">
+                <div class="stat-card reveal">
+                    <span class="stat-icon">😊</span>
+                    <strong data-count="10000">10,000+</strong>
+                    <span>Happy Customers</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-icon">📞</span>
+                    <strong data-count="24">24/7</strong>
+                    <span>Customer Support</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-icon">🏆</span>
+                    <strong data-count="100">100%</strong>
+                    <span>Local Tour Experts</span>
+                </div>
+                <div class="stat-card reveal">
+                    <span class="stat-icon">⭐</span>
+                    <strong data-count="5">5+</strong>
+                    <span>Premium Services</span>
+                </div>
             </div>
         </section>
 
@@ -150,36 +178,6 @@
             </div>
         </section>
 
-        <!-- ===== FEATURED SERVICES ===== -->
-        <section class="section featured-section" aria-labelledby="featured-title">
-            <div class="section-heading">
-                <p class="eyebrow">Featured Services</p>
-                <h2 id="featured-title">Everything for a smooth Varanasi visit</h2>
-            </div>
-            <div class="feature-grid">
-                <article class="reveal">
-                    <span>01</span>
-                    <h3>Sunrise Boat Ride</h3>
-                    <p>Peaceful early-morning ride along the ghats with fixed 5:30 AM timing.</p>
-                </article>
-                <article class="reveal">
-                    <span>02</span>
-                    <h3>Ganga Aarti Boat Ride</h3>
-                    <p>River-view seating for the evening ceremony near Dashashwamedh Ghat.</p>
-                </article>
-                <article class="reveal">
-                    <span>03</span>
-                    <h3>Private Boat Booking</h3>
-                    <p>Flexible family, couple and group rides with local boat operators.</p>
-                </article>
-                <article class="reveal">
-                    <span>04</span>
-                    <h3>Rental Car & Hotel Booking</h3>
-                    <p>Airport transfer, local sightseeing, Sarnath tour and comfortable stays.</p>
-                </article>
-            </div>
-        </section>
-
         <!-- ===== POPULAR DESTINATIONS ===== -->
         <section class="section destinations-section" aria-labelledby="destinations-title">
             <div class="section-heading">
@@ -187,20 +185,105 @@
                 <h2 id="destinations-title">Add local tours to your booking</h2>
             </div>
             <div class="destination-grid">
-                <article class="reveal-scale">
-                    <h3>Kashi Vishwanath Temple Tour</h3>
-                    <p>Guided darshan support, temple route planning and nearby heritage walk.</p>
-                    <button type="button" data-tour="temple">Book Tour</button>
+                <article class="reveal-scale destination-card">
+                    <div class="destination-img-wrap">
+                        <img src="kashi-vishwanath Temple.webp" alt="Kashi Vishwanath Temple and Ganga Aarti" loading="lazy">
+                        <span class="destination-rating">⭐ 4.8 (2,300+)</span>
+                    </div>
+                    <div class="destination-body">
+                        <h3>Kashi Vishwanath Temple Tour</h3>
+                        <div class="destination-meta">
+                            <span class="dest-duration">⏱ 3-4 hours</span>
+                            <span class="dest-price">From ₹1,500</span>
+                        </div>
+                        <p>Guided darshan support, temple route planning and nearby heritage walk. Includes Ganga Aarti visit coordination.</p>
+                        <ul class="dest-highlights">
+                            <li>✓ Skip-the-line temple guidance</li>
+                            <li>✓ Heritage walk through narrow lanes</li>
+                            <li>✓ Evening Aarti seating support</li>
+                        </ul>
+                        <button type="button" data-tour="temple">Book Tour</button>
+                    </div>
                 </article>
-                <article class="reveal-scale">
-                    <h3>Sarnath Tour</h3>
-                    <p>Comfortable half-day trip to Dhamek Stupa, museum area and Buddhist sites.</p>
-                    <button type="button" data-tour="sarnath">Book Tour</button>
+                <article class="reveal-scale destination-card">
+                    <div class="destination-img-wrap">
+                        <img src="sarnath.jpg" alt="Sarnath Buddhist temple and Dhamek Stupa" loading="lazy">
+                        <span class="destination-rating">⭐ 4.7 (1,800+)</span>
+                    </div>
+                    <div class="destination-body">
+                        <h3>Sarnath Tour</h3>
+                        <div class="destination-meta">
+                            <span class="dest-duration">⏱ Half day (4-5 hrs)</span>
+                            <span class="dest-price">From ₹2,500</span>
+                        </div>
+                        <p>Comfortable half-day trip to Dhamek Stupa, museum area and Buddhist sites where Buddha gave his first sermon.</p>
+                        <ul class="dest-highlights">
+                            <li>✓ Dhamek Stupa & Ashoka Pillar</li>
+                            <li>✓ Sarnath Museum entry</li>
+                            <li>✓ Private cab with driver</li>
+                        </ul>
+                        <button type="button" data-tour="sarnath">Book Tour</button>
+                    </div>
                 </article>
-                <article class="reveal-scale">
-                    <h3>Airport Transfer</h3>
-                    <p>Reliable pickup and drop from Lal Bahadur Shastri International Airport.</p>
-                    <button type="button" data-tour="airport">Book Transfer</button>
+                <article class="reveal-scale destination-card">
+                    <div class="destination-img-wrap">
+                        <img src="Airport-pickup.png" alt="Airport transfer service in Varanasi" loading="lazy">
+                        <span class="destination-rating">⭐ 4.9 (3,100+)</span>
+                    </div>
+                    <div class="destination-body">
+                        <h3>Airport Transfer</h3>
+                        <div class="destination-meta">
+                            <span class="dest-duration">⏱ 45-60 mins</span>
+                            <span class="dest-price">From ₹1,500</span>
+                        </div>
+                        <p>Reliable pickup and drop from Lal Bahadur Shastri International Airport. Meet-and-greet service with flight tracking.</p>
+                        <ul class="dest-highlights">
+                            <li>✓ Flight tracking included</li>
+                            <li>✓ Sedan / SUV / Innova options</li>
+                            <li>✓ 24/7 availability</li>
+                        </ul>
+                        <button type="button" data-tour="airport">Book Transfer</button>
+                    </div>
+                </article>
+                <article class="reveal-scale destination-card">
+                    <div class="destination-img-wrap">
+                        <img src="Prayagraj-Tour.png" alt="Prayagraj Triveni Sangam tour from Varanasi" loading="lazy">
+                        <span class="destination-rating">⭐ 4.6 (950+)</span>
+                    </div>
+                    <div class="destination-body">
+                        <h3>Prayagraj Tour</h3>
+                        <div class="destination-meta">
+                            <span class="dest-duration">⏱ Full day (10-12 hrs)</span>
+                            <span class="dest-price">From ₹5,500</span>
+                        </div>
+                        <p>Comfortable outstation trip for Triveni Sangam darshan, boat ride at Sangam and local sightseeing.</p>
+                        <ul class="dest-highlights">
+                            <li>✓ Triveni Sangam boat ride</li>
+                            <li>✓ Akshayavat & Hanuman Mandir</li>
+                            <li>✓ Private cab & driver included</li>
+                        </ul>
+                        <button type="button" data-tour="prayagraj">Book Tour</button>
+                    </div>
+                </article>
+                <article class="reveal-scale destination-card">
+                    <div class="destination-img-wrap">
+                        <img src="Ayodhya Tour.png" alt="Ayodhya Ram Mandir tour from Varanasi" loading="lazy">
+                        <span class="destination-rating">⭐ 4.8 (1,200+)</span>
+                    </div>
+                    <div class="destination-body">
+                        <h3>Ayodhya Tour</h3>
+                        <div class="destination-meta">
+                            <span class="dest-duration">⏱ Full day (10-12 hrs)</span>
+                            <span class="dest-price">From ₹6,500</span>
+                        </div>
+                        <p>Private outstation tour for Ram Mandir darshan, Hanuman Garhi, Kanak Bhawan and other sacred sites.</p>
+                        <ul class="dest-highlights">
+                            <li>✓ Ram Mandir darshan coordination</li>
+                            <li>✓ Hanuman Garhi & Kanak Bhawan</li>
+                            <li>✓ Pickup, drop & route planning</li>
+                        </ul>
+                        <button type="button" data-tour="ayodhya">Book Tour</button>
+                    </div>
                 </article>
             </div>
         </section>
@@ -261,7 +344,7 @@
                 </article>
 
                 <article class="package-card reveal-scale">
-                    <img src="party.avif" alt="Luxury bajra and party boat on the Ganga river for celebrations" loading="lazy">
+                    <img src="private boat.png" alt="Luxury bajra and party boat on the Ganga river for celebrations" loading="lazy">
                     <div>
                         <span class="tag">Luxury Bajra</span>
                         <h3>Luxury Party Boat</h3>
@@ -272,7 +355,7 @@
                 </article>
 
                 <article class="package-card reveal-scale" id="rental-car">
-                    <img src="cars.avif" alt="Air-conditioned rental car service for Varanasi airport transfer and sightseeing" loading="lazy">
+                    <img src="Rental Car Service.png" alt="Air-conditioned rental car service for Varanasi airport transfer and sightseeing" loading="lazy">
                     <div>
                         <span class="tag">Airport transfer</span>
                         <h3>Rental Car Service</h3>
@@ -291,6 +374,48 @@
                         <strong>From Rs. 2,000 / night</strong>
                         <button type="button" data-tour="hotel">Select</button>
                     </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED SERVICES ===== -->
+        <section class="section featured-section" aria-labelledby="featured-title">
+            <div class="section-heading">
+                <p class="eyebrow">Featured Services</p>
+                <h2 id="featured-title">Everything for a smooth Varanasi visit</h2>
+            </div>
+            <div class="feature-grid">
+                <article class="reveal">
+                    <div class="feature-img-wrap">
+                        <img src="boat-ride.jpg" alt="Sunrise boat ride on the Ganga river" loading="lazy">
+                    </div>
+                    <span>01</span>
+                    <h3>Sunrise Boat Ride</h3>
+                    <p>Peaceful early-morning ride along the ghats with fixed 5:30 AM timing.</p>
+                </article>
+                <article class="reveal">
+                    <div class="feature-img-wrap">
+                        <img src="ganga-arti.jpg" alt="Ganga Aarti ceremony from the river" loading="lazy">
+                    </div>
+                    <span>02</span>
+                    <h3>Ganga Aarti Boat Ride</h3>
+                    <p>River-view seating for the evening ceremony near Dashashwamedh Ghat.</p>
+                </article>
+                <article class="reveal">
+                    <div class="feature-img-wrap">
+                        <img src="private.jpg" alt="Private motor boat on the Ganga" loading="lazy">
+                    </div>
+                    <span>03</span>
+                    <h3>Private Boat Booking</h3>
+                    <p>Flexible family, couple and group rides with local boat operators.</p>
+                </article>
+                <article class="reveal">
+                    <div class="feature-img-wrap">
+                        <img src="cars.avif" alt="Rental car and hotel booking service" loading="lazy">
+                    </div>
+                    <span>04</span>
+                    <h3>Rental Car & Hotel Booking</h3>
+                    <p>Airport transfer, local sightseeing, Sarnath tour and comfortable stays.</p>
                 </article>
             </div>
         </section>
@@ -361,19 +486,19 @@
             <!-- Original Hotel Grid (preserved) -->
             <div class="hotel-grid" style="margin-top: 2rem;">
                 <article class="hotel-card" data-hotel-price="2000" data-hotel-name="Ganga View Budget Stay">
-                    <img src="hotel.jpg" loading="lazy" alt="Budget hotel room in Varanasi with clean bedding">
+                    <img src="Ganga View Budget Stay.png" loading="lazy" alt="Budget hotel room in Varanasi with clean bedding">
                     <div><span class="tag">Budget Hotels</span><h3>Ganga View Budget Stay</h3><p>Rating: 4.3/5</p><p>WiFi, AC, family rooms, near ghats</p><strong>Rs. 2,000 / night</strong><em>Available today</em><button type="button" data-hotel-select>Choose Hotel</button></div>
                 </article>
                 <article class="hotel-card" data-hotel-price="3200" data-hotel-name="Dashashwamedh Deluxe Inn">
-                    <img src="hotel.jpg" loading="lazy" alt="Deluxe Varanasi hotel room with modern amenities">
+                    <img src="Dashashwamedh Deluxe Inn.jpeg" loading="lazy" alt="Deluxe Varanasi hotel room with modern amenities">
                     <div><span class="tag">Deluxe Hotels</span><h3>Dashashwamedh Deluxe Inn</h3><p>Rating: 4.5/5</p><p>Breakfast, lift, AC, temple route support</p><strong>Rs. 3,200 / night</strong><em>Limited rooms</em><button type="button" data-hotel-select>Choose Hotel</button></div>
                 </article>
                 <article class="hotel-card" data-hotel-price="5000" data-hotel-name="Kashi Premium Residency">
-                    <img src="hotel.jpg" loading="lazy" alt="Premium hotel room for Varanasi family stays">
+                    <img src="Kashi Premium Residency.png" loading="lazy" alt="Premium hotel room for Varanasi family stays">
                     <div><span class="tag">Premium Hotels</span><h3>Kashi Premium Residency</h3><p>Rating: 4.7/5</p><p>Restaurant, parking, large rooms, travel desk</p><strong>Rs. 5,000 / night</strong><em>Available</em><button type="button" data-hotel-select>Choose Hotel</button></div>
                 </article>
                 <article class="hotel-card" data-hotel-price="7500" data-hotel-name="Luxury Heritage Stay">
-                    <img src="hotel.jpg" loading="lazy" alt="Luxury Varanasi hotel stay with premium room amenities">
+                    <img src="Luxury Heritage Stay.jpg" loading="lazy" alt="Luxury Varanasi hotel stay with premium room amenities">
                     <div><span class="tag">Luxury Hotels</span><h3>Luxury Heritage Stay</h3><p>Rating: 4.8/5</p><p>River-view rooms, concierge, premium transport</p><strong>Rs. 7,500 / night</strong><em>On request</em><button type="button" data-hotel-select>Choose Hotel</button></div>
                 </article>
             </div>
@@ -485,10 +610,10 @@
                 <h2 id="tour-package-title">Popular pilgrimage and sightseeing packages</h2>
             </div>
             <div class="tour-package-grid">
-                <article class="reveal-scale"><img src="ganga-arti.jpg" loading="lazy" alt="Kashi Vishwanath temple tour and Ganga Aarti package"><div><h3>Kashi Vishwanath Tour</h3><p>Temple route guidance with heritage walk support.</p><span>Duration: 3-4 hours</span><span>Includes guide support and pickup coordination</span><strong>From Rs. 1,500</strong><button type="button" data-tour="temple">Book Now</button></div></article>
-                <article class="reveal-scale"><img src="car.jpg" loading="lazy" alt="Sarnath tour package from Varanasi"><div><h3>Sarnath Tour</h3><p>Visit Dhamek Stupa and nearby Buddhist landmarks.</p><span>Duration: Half day</span><span>Includes cab coordination and route planning</span><strong>From Rs. 2,500</strong><button type="button" data-tour="sarnath">Book Now</button></div></article>
-                <article class="reveal-scale"><img src="cars.avif" loading="lazy" alt="Prayagraj tour package from Varanasi by cab"><div><h3>Prayagraj Tour</h3><p>Comfortable outstation trip for Triveni Sangam darshan.</p><span>Duration: Full day</span><span>Includes private cab and itinerary support</span><strong>From Rs. 5,500</strong><button type="button" data-tour="prayagraj">Book Now</button></div></article>
-                <article class="reveal-scale"><img src="cars.avif" loading="lazy" alt="Ayodhya tour package from Varanasi by cab"><div><h3>Ayodhya Tour</h3><p>Private outstation tour for Ram Mandir and major sites.</p><span>Duration: Full day</span><span>Includes pickup, drop and route planning</span><strong>From Rs. 6,500</strong><button type="button" data-tour="ayodhya">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="kashi-vishwanath Temple.webp" loading="lazy" alt="Kashi Vishwanath temple tour and Ganga Aarti package"><div><h3>Kashi Vishwanath Tour</h3><p>Temple route guidance with heritage walk support.</p><span>Duration: 3-4 hours</span><span>Includes guide support and pickup coordination</span><strong>From Rs. 1,500</strong><button type="button" data-tour="temple">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="sarnath.jpg" loading="lazy" alt="Sarnath tour package from Varanasi"><div><h3>Sarnath Tour</h3><p>Visit Dhamek Stupa and nearby Buddhist landmarks.</p><span>Duration: Half day</span><span>Includes cab coordination and route planning</span><strong>From Rs. 2,500</strong><button type="button" data-tour="sarnath">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="Prayagraj-Tour.png" loading="lazy" alt="Prayagraj tour package from Varanasi by cab"><div><h3>Prayagraj Tour</h3><p>Comfortable outstation trip for Triveni Sangam darshan.</p><span>Duration: Full day</span><span>Includes private cab and itinerary support</span><strong>From Rs. 5,500</strong><button type="button" data-tour="prayagraj">Book Now</button></div></article>
+                <article class="reveal-scale"><img src="Ayodhya Tour.png" loading="lazy" alt="Ayodhya tour package from Varanasi by cab"><div><h3>Ayodhya Tour</h3><p>Private outstation tour for Ram Mandir and major sites.</p><span>Duration: Full day</span><span>Includes pickup, drop and route planning</span><strong>From Rs. 6,500</strong><button type="button" data-tour="ayodhya">Book Now</button></div></article>
                 <article class="reveal-scale"><img src="ganga-arti.jpg" loading="lazy" alt="Ganga Aarti boat tour package in Varanasi"><div><h3>Ganga Aarti Tour</h3><p>Evening boat view for Dashashwamedh Ghat ceremony.</p><span>Duration: 1.5-2 hours</span><span>Includes boat operator and WhatsApp support</span><strong>Rs. 3,500 / boat</strong><button type="button" data-tour="aarti">Book Now</button></div></article>
                 <article class="reveal-scale"><img src="boat.png" loading="lazy" alt="Sunrise boat tour package in Varanasi"><div><h3>Sunrise Tour</h3><p>Morning boat ride across iconic ghats before crowds.</p><span>Duration: 1-1.5 hours</span><span>Includes private boat and fixed 5:30 AM timing</span><strong>Rs. 3,000 / boat</strong><button type="button" data-tour="sunrise">Book Now</button></div></article>
             </div>
@@ -604,46 +729,112 @@
             </form>
         </section>
 
-        <!-- ===== GOOGLE REVIEWS SECTION ===== -->
-        <section class="section google-reviews-section" aria-labelledby="google-review-title">
+        <!-- ===== HAPPY CUSTOMERS / GOOGLE REVIEWS SECTION ===== -->
+        <section class="section happy-customers-section" aria-labelledby="google-review-title">
             <div class="section-heading">
-                <p class="eyebrow">Google Reviews</p>
-                <h2 id="google-review-title">What our guests say</h2>
+                <p class="eyebrow">Happy Customers</p>
+                <h2 id="google-review-title">What our guests say about us</h2>
             </div>
             <div class="review-grid">
                 <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="boat-ride.jpg" alt="Priya Sharma - Sunrise Boat Ride customer" loading="lazy">
+                    </div>
                     <div class="reviewer-info">
                         <div class="reviewer-avatar">PS</div>
                         <div>
                             <div class="reviewer-name">Priya Sharma</div>
-                            <div class="review-date">2 weeks ago</div>
+                            <div class="review-date">2 weeks ago · Sunrise Boat Ride</div>
                         </div>
                     </div>
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Beautiful sunrise ride and very smooth WhatsApp booking. The boatman reached on time. Highly recommended for anyone visiting Varanasi!"</p>
+                    <p class="review-text">"Beautiful sunrise ride and very smooth WhatsApp booking. The boatman reached on time. Highly recommended for anyone visiting Varanasi! The views of the ghats at dawn were breathtaking."</p>
                 </article>
                 <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="ganga-arti.jpg" alt="Rahul Verma - Ganga Aarti Boat customer" loading="lazy">
+                    </div>
                     <div class="reviewer-info">
                         <div class="reviewer-avatar">RV</div>
                         <div>
                             <div class="reviewer-name">Rahul Verma</div>
-                            <div class="review-date">1 month ago</div>
+                            <div class="review-date">1 month ago · Ganga Aarti Boat Ride</div>
                         </div>
                     </div>
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"The Ganga Aarti view from the river was perfect for our family. Helpful local support made the experience unforgettable."</p>
+                    <p class="review-text">"The Ganga Aarti view from the river was perfect for our family. Helpful local support made the experience unforgettable. We got amazing photos of the ceremony from the boat."</p>
                 </article>
                 <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="cruise.jpg" alt="Ananya Singh - Alaknanda Cruise customer" loading="lazy">
+                    </div>
                     <div class="reviewer-info">
                         <div class="reviewer-avatar">AS</div>
                         <div>
                             <div class="reviewer-name">Ananya Singh</div>
-                            <div class="review-date">3 weeks ago</div>
+                            <div class="review-date">3 weeks ago · Alaknanda Cruise</div>
                         </div>
                     </div>
                     <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"Car pickup, hotel help and private boat booking were arranged together. Very convenient service for a stress-free trip."</p>
+                    <p class="review-text">"The luxury cruise experience was fantastic! Car pickup, hotel help and private boat booking were arranged together. Very convenient service for a completely stress-free trip to Varanasi."</p>
                 </article>
+                <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="private.jpg" alt="Vikram Joshi - Private Boat customer" loading="lazy">
+                    </div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">VJ</div>
+                        <div>
+                            <div class="reviewer-name">Vikram Joshi</div>
+                            <div class="review-date">1 month ago · Private Motor Boat</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The hotel booking was seamless. Driver picked us from airport, dropped at hotel, and the private boat tour was arranged perfectly. Everything was well coordinated. Highly professional service."</p>
+                </article>
+                <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="party.avif" alt="Amit & Neha Kapoor - Luxury Party Boat customers" loading="lazy">
+                    </div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">AK</div>
+                        <div>
+                            <div class="reviewer-name">Amit & Neha Kapoor</div>
+                            <div class="review-date">2 weeks ago · Luxury Party Boat</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"We booked the luxury bajra for our anniversary celebration. The sunset views from the deck were absolutely magical. Live Banarasi music and complimentary snacks made it unforgettable."</p>
+                </article>
+                <article class="google-review-card reveal">
+                    <div class="reviewer-img-wrap">
+                        <img src="hotel.jpg" alt="Meera Patel - Hotel & Cab Package customer" loading="lazy">
+                    </div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">MP</div>
+                        <div>
+                            <div class="reviewer-name">Meera Patel</div>
+                            <div class="review-date">3 weeks ago · Hotel & Cab Package</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Family trip to Kashi was made easy with GangaRide. The hotel near Dashashwamedh Ghat was excellent, cab for Sarnath tour was comfortable, and the Aarti boat ride was the highlight."</p>
+                </article>
+            </div>
+            <div class="review-stats-row">
+                <div class="review-stat">
+                    <strong>4.9</strong>
+                    <div class="review-stat-stars">★★★★★</div>
+                    <span>Average Rating</span>
+                </div>
+                <div class="review-stat">
+                    <strong>10,000+</strong>
+                    <span>Happy Customers</span>
+                </div>
+                <div class="review-stat">
+                    <strong>98%</strong>
+                    <span>Would Recommend</span>
+                </div>
             </div>
             <div class="google-review-cta">
                 <a href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" target="_blank" rel="noreferrer">Leave a Google Review ★</a>
@@ -950,27 +1141,31 @@
             <p>Premium boat booking, travel support, hotel booking and local tours in Varanasi.</p>
         </div>
         <div>
-            <h3>Services</h3>
+            <h3>Quick Links</h3>
             <a href="#packages">Boat Packages</a>
-            <a href="#rental-car">Rental Car Service</a>
             <a href="#hotel-booking">Hotel Booking</a>
-            <a href="#booking">Airport Transfer</a>
+            <a href="#cab-booking">Cab Booking</a>
+            <a href="#tour-packages">Tour Packages</a>
+            <a href="pages/booking-status.html">📋 Booking Status</a>
         </div>
         <div>
-            <h3>Contact</h3>
-            <a href="tel:+919170409773">+91 9170409773</a>
-            <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer">WhatsApp</a>
+            <h3>Support</h3>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact Us</a>
+            <a href="tel:+919170409773">📞 +91 9170409773</a>
+            <a href="https://wa.me/919170409773" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+        </div>
+        <div>
+            <h3>Account</h3>
+            <a href="admin/index.html">🔐 Admin Login</a>
+            <a href="pages/booking-status.html">📱 My Booking</a>
             <span>Dashashwamedh Ghat, Varanasi</span>
         </div>
-        <div>
-            <h3>Social</h3>
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
-        </div>
-        <p class="copyright">Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
+        <p class="copyright">Copyright 2026 Kashi Ganga Boat Tours | <a href="admin/index.html" style="color: var(--muted); text-decoration: none;">Admin</a> | All rights reserved.</p>
     </footer>
 
+    <script src="js/firebase-config.js"></script>
+    <script src="js/whatsapp.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
