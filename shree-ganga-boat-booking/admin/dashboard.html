@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GangaRide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        :root {
+            --ink: #14212b; --muted: #60717c; --river: #0b7285; --river-dark: #064b57;
+            --river-soft: #dff4f3; --saffron: #d77a21; --saffron-dark: #aa5a14;
+            --leaf: #2f7d46; --cream: #fff8ec; --line: #dbe7e5; --white: #ffffff;
+            --shadow: 0 22px 60px rgba(20,33,43,0.16);
+            --shadow-soft: 0 12px 34px rgba(20,33,43,0.1);
+            --bg: #f5f0ea;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--bg); color: var(--ink); }
+        
+        .admin-header { background: var(--white); border-bottom: 1px solid var(--line); padding: 0 2rem; min-height: 70px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+        .admin-brand { font-weight: 900; font-size: 1.2rem; color: var(--river-dark); text-decoration: none; }
+        .admin-brand small { display: block; color: var(--saffron); font-size: 0.65rem; text-transform: uppercase; }
+        .admin-user { display: flex; align-items: center; gap: 1rem; }
+        .admin-user span { font-weight: 700; color: var(--muted); font-size: 0.85rem; }
+        .logout-btn { padding: 0.5rem 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--white); font: inherit; font-weight: 800; cursor: pointer; color: var(--muted); transition: all 0.2s ease; }
+        .logout-btn:hover { border-color: #e74c3c; color: #e74c3c; }
+        
+        .dashboard { max-width: 1400px; margin: 0 auto; padding: 1.5rem 2rem; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { padding: 1.2rem; background: var(--white); border-radius: 16px; box-shadow: var(--shadow-soft); }
+        .stat-card .stat-label { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); font-weight: 800; letter-spacing: 0.5px; }
+        .stat-card .stat-value { font-size: 2rem; font-weight: 900; color: var(--ink); margin: 0.3rem 0; }
+        .stat-card .stat-sub { font-size: 0.85rem; color: var(--muted); }
+        .stat-card.primary .stat-value { color: var(--river); }
+        .stat-card.success .stat-value { color: var(--leaf); }
+        .stat-card.warning .stat-value { color: var(--saffron); }
+        .stat-card.danger .stat-value { color: #e74c3c; }
+        
+        .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .admin-tab { padding: 0.7rem 1.2rem; border: 1px solid var(--line); border-radius: 8px; background: var(--white); font: inherit; font-weight: 800; cursor: pointer; transition: all 0.2s ease; color: var(--muted); }
+        .admin-tab:hover { border-color: var(--river); color: var(--river); }
+        .admin-tab.active { background: var(--river); color: white; border-color: var(--river); }
+        .admin-tab .count-badge { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.2); font-size: 0.7rem; margin-left: 0.3rem; }
+        
+        .bookings-table-wrap { background: var(--white); border-radius: 16px; box-shadow: var(--shadow-soft); overflow-x: auto; }
+        .bookings-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        .bookings-table th { text-align: left; padding: 1rem; font-size: 0.75rem; text-transform: uppercase; color: var(--muted); font-weight: 800; border-bottom: 2px solid var(--line); }
+        .bookings-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+        .bookings-table tr:hover td { background: var(--mist); }
+        
+        .status-pill { display: inline-flex; padding: 0.25rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 900; text-transform: uppercase; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #d4edda; color: #155724; }
+        .status-rejected { background: #f8d7da; color: #721c24; }
+        .status-completed { background: #cce5ff; color: #004085; }
+        
+        .action-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+        .action-btn { padding: 0.35rem 0.7rem; border: 0; border-radius: 6px; font-size: 0.75rem; font-weight: 800; cursor: pointer; transition: all 0.2s ease; }
+        .action-btn.approve { background: #d4edda; color: #155724; }
+        .action-btn.approve:hover { background: #28a745; color: white; }
+        .action-btn.reject { background: #f8d7da; color: #721c24; }
+        .action-btn.reject:hover { background: #dc3545; color: white; }
+        .action-btn.complete { background: #cce5ff; color: #004085; }
+        .action-btn.complete:hover { background: #007bff; color: white; }
+        .action-btn.whatsapp { background: #d1ecf1; color: #0c5460; }
+        .action-btn.whatsapp:hover { background: #25d366; color: white; }
+        .action-btn.delete { background: #fef2f2; color: #991b1b; }
+        .action-btn.delete:hover { background: #dc2626; color: white; }
+        
+        .empty-state { padding: 3rem; text-align: center; color: var(--muted); }
+        .empty-state strong { display: block; font-size: 1.2rem; margin-bottom: 0.3rem; }
+        
+        .filter-bar { display: flex; gap: 0.8rem; margin-bottom: 1rem; flex-wrap: wrap; align-items: center; }
+        .filter-bar input, .filter-bar select { min-height: 40px; border: 1px solid var(--line); border-radius: 8px; padding: 0 0.8rem; font: inherit; font-weight: 600; background: var(--white); }
+        .filter-bar input:focus, .filter-bar select:focus { outline: none; border-color: var(--river); }
+        .filter-bar input { flex: 1; min-width: 200px; }
+        
+        @media (max-width: 768px) {
+            .dashboard { padding: 1rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .admin-tabs { overflow-x: auto; flex-wrap: nowrap; }
+            .action-btns { flex-direction: column; }
+        }
+        
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; place-items: center; z-index: 100; padding: 1rem; }
+        .modal-overlay.show { display: grid; }
+        .modal-content { background: var(--white); border-radius: 16px; padding: 2rem; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; box-shadow: var(--shadow); }
+        .modal-content h2 { margin: 0 0 1rem; }
+        .modal-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0; }
+        .modal-detail-item { padding: 0.8rem; background: var(--mist); border-radius: 8px; }
+        .modal-detail-item .detail-label { font-size: 0.7rem; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+        .modal-detail-item .detail-value { font-size: 1rem; font-weight: 700; margin-top: 0.2rem; }
+        .modal-close { margin-top: 1rem; padding: 0.7rem 1.5rem; border: 0; border-radius: 8px; background: var(--river); color: white; font-weight: 900; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header class="admin-header">
+        <a href="index.html" class="admin-brand">
+            GangaRide
+            <small>Admin Panel</small>
+        </a>
+        <div class="admin-user">
+            <span>👤 Admin</span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h1 style="margin: 0; font-size: 1.5rem;">Booking Management</h1>
+            <a href="../index.html" style="font-size: 0.85rem; color: var(--river); font-weight: 800; text-decoration: none;">← Back to Website</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card primary"><div class="stat-label">Total Bookings</div><div class="stat-value" id="totalBookings">0</div></div>
+            <div class="stat-card success"><div class="stat-label">Today's Bookings</div><div class="stat-value" id="todayBookings">0</div></div>
+            <div class="stat-card"><div class="stat-label">Revenue</div><div class="stat-value" id="totalRevenue">₹0</div></div>
+            <div class="stat-card warning"><div class="stat-label">Pending</div><div class="stat-value" id="pendingCount">0</div></div>
+            <div class="stat-card success"><div class="stat-label">Confirmed</div><div class="stat-value" id="confirmedCount">0</div></div>
+            <div class="stat-card danger"><div class="stat-label">Rejected</div><div class="stat-value" id="rejectedCount">0</div></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="admin-tabs" id="tabContainer">
+            <button class="admin-tab active" data-filter="all">All <span class="count-badge" id="allCount">0</span></button>
+            <button class="admin-tab" data-filter="pending">Pending <span class="count-badge" id="pendingTabCount">0</span></button>
+            <button class="admin-tab" data-filter="confirmed">Confirmed <span class="count-badge" id="confirmedTabCount">0</span></button>
+            <button class="admin-tab" data-filter="rejected">Rejected <span class="count-badge" id="rejectedTabCount">0</span></button>
+            <button class="admin-tab" data-filter="completed">Completed <span class="count-badge" id="completedTabCount">0</span></button>
+            <button class="admin-tab" data-filter="boat">🚤 Boat</button>
+            <button class="admin-tab" data-filter="hotel">🏨 Hotel</button>
+            <button class="admin-tab" data-filter="cab">🚗 Cab</button>
+            <button class="admin-tab" data-filter="tour">🗺️ Tours</button>
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Search by name, phone, ticket ID or service..." oninput="renderTable()">
+            <button class="action-btn" style="background: var(--river); color: white; padding: 0.6rem 1.2rem; font-weight: 900;" onclick="exportData()">📥 Export</button>
+            <button class="action-btn" style="background: var(--saffron); color: white; padding: 0.6rem 1.2rem; font-weight: 900;" onclick="refresh()">🔄 Refresh</button>
+        </div>
+
+        <!-- Table -->
+        <div class="bookings-table-wrap">
+            <table class="bookings-table">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Customer</th>
+                        <th>Service</th>
+                        <th>Date/Time</th>
+                        <th>Guests</th>
+                        <th>Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bookingsBody">
+                    <tr><td colspan="9" class="empty-state"><strong>No bookings found</strong>Bookings will appear here once customers start booking.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-content">
+            <h2>Booking Details</h2>
+            <div id="modalDetails"></div>
+            <button class="modal-close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="../js/firebase-config.js"></script>
+    <script>
+        let currentFilter = 'all';
+        let currentBookings = [];
+        
+        function loadBookings() {
+            currentBookings = DB.getBookings();
+            updateStats();
+            renderTable();
+        }
+        
+        function updateStats() {
+            const stats = DB.getStats();
+            document.getElementById('totalBookings').textContent = stats.total;
+            document.getElementById('todayBookings').textContent = stats.today;
+            document.getElementById('totalRevenue').textContent = '₹' + stats.revenue.toLocaleString('en-IN');
+            document.getElementById('pendingCount').textContent = stats.pending;
+            document.getElementById('confirmedCount').textContent = stats.confirmed;
+            document.getElementById('rejectedCount').textContent = stats.rejected;
+            
+            // Tab counts
+            document.getElementById('allCount').textContent = stats.total;
+            document.getElementById('pendingTabCount').textContent = stats.pending;
+            document.getElementById('confirmedTabCount').textContent = stats.confirmed;
+            document.getElementById('rejectedTabCount').textContent = stats.rejected;
+            document.getElementById('completedTabCount').textContent = stats.completed;
+        }
+        
+        function getFilteredBookings() {
+            let filtered = [...currentBookings];
+            
+            // Status filter
+            if (currentFilter !== 'all') {
+                if (currentFilter === 'boat') {
+                    const boatServices = ['sunrise', 'aarti', 'privateBoat', 'private', 'cruise', 'luxury', 'Morning Sunrise Ride', 'Evening Ganga Aarti', 'Private Motor Boat', 'Alaknanda Cruise', 'Luxury Bajra Boat'];
+                    filtered = filtered.filter(b => boatServices.some(s => 
+                        (b.service && b.service.toLowerCase().includes(s.toLowerCase())) || 
+                        (b.tour && b.tour.toLowerCase().includes(s.toLowerCase()))
+                    ));
+                } else if (currentFilter === 'hotel') {
+                    filtered = filtered.filter(b => (b.service && b.service.toLowerCase().includes('hotel')) || (b.tour && b.tour.toLowerCase().includes('hotel')));
+                } else if (currentFilter === 'cab') {
+                    filtered = filtered.filter(b => (b.service && (b.service.toLowerCase().includes('cab') || b.service.toLowerCase().includes('car') || b.service.toLowerCase().includes('rental'))) || (b.tour && (b.tour.toLowerCase().includes('cab') || b.tour.toLowerCase().includes('car'))));
+                } else if (currentFilter === 'tour') {
+                    filtered = filtered.filter(b => (b.service && (b.service.toLowerCase().includes('tour') || b.service.toLowerCase().includes('temple') || b.service.toLowerCase().includes('sarnath') || b.service.toLowerCase().includes('prayagraj') || b.service.toLowerCase().includes('ayodhya'))) || (b.tour && (b.tour.toLowerCase().includes('tour') || b.tour.toLowerCase().includes('temple') || b.tour.toLowerCase().includes('sarnath'))));
+                } else {
+                    filtered = filtered.filter(b => b.status === currentFilter);
+                }
+            }
+            
+            // Search filter
+            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (searchTerm) {
+                filtered = filtered.filter(b => 
+                    (b.name && b.name.toLowerCase().includes(searchTerm)) ||
+                    (b.phone && b.phone.includes(searchTerm)) ||
+                    (b.ticketId && b.ticketId.toLowerCase().includes(searchTerm)) ||
+                    (b.service && b.service.toLowerCase().includes(searchTerm)) ||
+                    (b.tour && b.tour.toLowerCase().includes(searchTerm)) ||
+                    (b.email && b.email.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            // Sort by created date (newest first)
+            filtered.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+            
+            return filtered;
+        }
+        
+        function renderTable() {
+            const filtered = getFilteredBookings();
+            const tbody = document.getElementById('bookingsBody');
+            
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="9" class="empty-state"><strong>No bookings found</strong>No bookings match your current filter.</td></tr>`;
+                return;
+            }
+            
+            tbody.innerHTML = filtered.map(booking => {
+                const statusClass = `status-${booking.status || 'pending'}`;
+                const serviceName = booking.service || booking.tour || '-';
+                const totalGuests = (parseInt(booking.adults) || 0) + (parseInt(booking.children) || 0) + (parseInt(booking.infants) || 0);
+                
+                return `
+                    <tr>
+                        <td><strong>${booking.ticketId || '-'}</strong></td>
+                        <td>
+                            <strong>${booking.name || '-'}</strong>
+                            <div style="font-size: 0.8rem; color: var(--muted);">${booking.phone || ''}</div>
+                        </td>
+                        <td>${serviceName}</td>
+                        <td>
+                            <div>${booking.date || '-'}</div>
+                            <div style="font-size: 0.8rem; color: var(--muted);">${booking.time || '-'}</div>
+                        </td>
+                        <td>${totalGuests}</td>
+                        <td><strong>₹${(booking.cost || 0).toLocaleString('en-IN')}</strong></td>
+                        <td>
+                            <span style="font-size: 0.8rem; font-weight: 700;">${booking.paymentStatus || booking.payment || 'Pending'}</span>
+                        </td>
+                        <td><span class="status-pill ${statusClass}">${(booking.status || 'pending').toUpperCase()}</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn" onclick="viewDetails('${booking.ticketId}')" title="View Details">👁️</button>
+                                ${booking.status !== 'confirmed' && booking.status !== 'completed' ? `<button class="action-btn approve" onclick="updateStatus('${booking.ticketId}', 'confirmed')" title="Approve">✓</button>` : ''}
+                                ${booking.status !== 'rejected' && booking.status !== 'completed' ? `<button class="action-btn reject" onclick="updateStatus('${booking.ticketId}', 'rejected')" title="Reject">✗</button>` : ''}
+                                ${booking.status === 'confirmed' ? `<button class="action-btn complete" onclick="updateStatus('${booking.ticketId}', 'completed')" title="Mark Completed">✓✓</button>` : ''}
+                                <button class="action-btn whatsapp" onclick="contactCustomer('${booking.phone}', '${booking.name}')" title="Contact">💬</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function updateStatus(ticketId, newStatus) {
+            if (!confirm(`Are you sure you want to ${newStatus} this booking?`)) return;
+            
+            const booking = DB.updateBookingStatus(ticketId, newStatus);
+            if (booking) {
+                // Send WhatsApp notification
+                if (typeof WhatsApp !== 'undefined') {
+                    booking.status = newStatus;
+                    WhatsApp.sendStatusUpdate(booking);
+                }
+                loadBookings();
+            }
+        }
+        
+        function viewDetails(ticketId) {
+            const booking = DB.getBookingByTicket(ticketId);
+            if (!booking) return;
+            
+            const modal = document.getElementById('detailModal');
+            const details = document.getElementById('modalDetails');
+            
+            const totalGuests = (parseInt(booking.adults) || 0) + (parseInt(booking.children) || 0) + (parseInt(booking.infants) || 0);
+            
+            details.innerHTML = `
+                <div style="margin-bottom: 1rem; padding: 1rem; background: var(--river-soft); border-radius: 12px;">
+                    <strong style="font-size: 1.2rem;">${booking.ticketId}</strong>
+                    <span class="status-pill status-${booking.status || 'pending'}" style="margin-left: 0.5rem;">${(booking.status || 'pending').toUpperCase()}</span>
+                </div>
+                <div class="modal-detail-grid">
+                    <div class="modal-detail-item"><div class="detail-label">Name</div><div class="detail-value">${booking.name || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Phone</div><div class="detail-value">${booking.phone || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Email</div><div class="detail-value">${booking.email || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Service</div><div class="detail-value">${booking.service || booking.tour || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Date</div><div class="detail-value">${booking.date || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Time</div><div class="detail-value">${booking.time || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Adults</div><div class="detail-value">${booking.adults || 0}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Children</div><div class="detail-value">${booking.children || 0}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Infants</div><div class="detail-value">${booking.infants || 0}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Total Guests</div><div class="detail-value">${totalGuests}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Pickup</div><div class="detail-value">${booking.pickupLocation || booking.pickup || '-'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Amount</div><div class="detail-value">₹${(booking.cost || 0).toLocaleString('en-IN')}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Payment</div><div class="detail-value">${booking.paymentStatus || booking.payment || 'Pending'}</div></div>
+                    <div class="modal-detail-item"><div class="detail-label">Status</div><div class="detail-value">${(booking.status || 'pending').toUpperCase()}</div></div>
+                    <div class="modal-detail-item" style="grid-column: 1 / -1;"><div class="detail-label">Special Requests</div><div class="detail-value">${booking.specialRequests || booking.requests || 'None'}</div></div>
+                    <div class="modal-detail-item" style="grid-column: 1 / -1;"><div class="detail-label">Created</div><div class="detail-value">${booking.createdAt ? new Date(booking.createdAt).toLocaleString() : '-'}</div></div>
+                </div>
+            `;
+            
+            modal.classList.add('show');
+        }
+        
+        function closeModal() {
+            document.getElementById('detailModal').classList.remove('show');
+        }
+        
+        function contactCustomer(phone, name) {
+            const message = encodeURIComponent(`Hello ${name}, this is GangaRide team. We're contacting you regarding your booking.`);
+            window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${message}`, '_blank');
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            sessionStorage.removeItem('adminLoginTime');
+            window.location.href = 'index.html';
+        }
+        
+        function refresh() {
+            loadBookings();
+        }
+        
+        function exportData() {
+            const bookings = DB.getBookings();
+            if (bookings.length === 0) {
+                alert('No bookings to export.');
+                return;
+            }
+            
+            // Simple CSV export
+            let csv = 'Ticket ID,Name,Phone,Email,Service,Date,Time,Adults,Children,Infants,Pickup,Amount,Payment,Status,Created\n';
+            bookings.forEach(b => {
+                const row = [
+                    b.ticketId || '', b.name || '', b.phone || '', b.email || '',
+                    (b.service || b.tour || ''), b.date || '', b.time || '',
+                    b.adults || 0, b.children || 0, b.infants || 0,
+                    b.pickupLocation || b.pickup || '', b.cost || 0,
+                    b.paymentStatus || b.payment || '', b.status || 'pending',
+                    b.createdAt || ''
+                ].map(v => `"${v}"`).join(',');
+                csv += row + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `gangaRide_bookings_${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+        
+        // Tab switching
+        document.getElementById('tabContainer').addEventListener('click', function(e) {
+            const tab = e.target.closest('.admin-tab');
+            if (!tab) return;
+            
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentFilter = tab.dataset.filter;
+            renderTable();
+        });
+        
+        // Modal close on overlay click
+        document.getElementById('detailModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        
+        // Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+        
+        // Check auth
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Load data
+        loadBookings();
+        
+        // Auto-refresh every 30 seconds
+        setInterval(loadBookings, 30000);
+    </script>
+</body>
+</html>

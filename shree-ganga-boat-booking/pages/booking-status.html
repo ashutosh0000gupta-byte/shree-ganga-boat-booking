@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Status - GangaRide | Check Your Ticket</title>
+    <meta name="description" content="Check your GangaRide booking status by entering your Ticket ID and mobile number.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .status-page { min-height: 80vh; padding: 6rem 6vw; }
+        .status-container { max-width: 800px; margin: 0 auto; }
+        .status-card { padding: 2rem; background: var(--white); border-radius: 24px; box-shadow: var(--shadow); }
+        .status-card h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0 0 0.3rem; }
+        .status-search { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.8rem; margin: 1.5rem 0; }
+        .status-search input { min-height: 50px; border: 2px solid var(--line); border-radius: 12px; padding: 0 1rem; font: inherit; font-weight: 600; }
+        .status-search input:focus { outline: none; border-color: var(--river); box-shadow: 0 0 0 3px rgba(11, 114, 133, 0.14); }
+        .status-search button { min-height: 50px; padding: 0 2rem; border: 0; border-radius: 12px; background: var(--river); color: var(--white); font-weight: 900; cursor: pointer; transition: background 0.2s ease; }
+        .status-search button:hover { background: var(--river-dark); }
+        .status-result { display: none; margin-top: 2rem; padding: 1.5rem; border-radius: 16px; }
+        .status-result.is-visible { display: block; }
+        .status-timeline { display: grid; gap: 0.5rem; margin: 1.5rem 0; }
+        .timeline-item { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 1rem; border-radius: 8px; background: var(--mist); }
+        .timeline-item .step-icon { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: 1rem; font-weight: 900; flex-shrink: 0; }
+        .step-active { background: var(--leaf); color: white; }
+        .step-pending { background: var(--line); color: var(--muted); }
+        .step-rejected { background: #f8d7da; color: #721c24; }
+        .status-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .status-summary-item { padding: 1rem; background: var(--mist); border-radius: 12px; text-align: center; }
+        .status-summary-item .label { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+        .status-summary-item .value { font-size: 1.2rem; font-weight: 900; color: var(--ink); margin-top: 0.3rem; }
+        .status-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
+        .loading-spinner { display: none; text-align: center; padding: 2rem; }
+        .loading-spinner.is-visible { display: block; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--line); border-top-color: var(--river); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error-message { color: #721c24; background: #f8d7da; padding: 1rem; border-radius: 12px; margin-top: 1rem; display: none; }
+        .error-message.is-visible { display: block; }
+        @media (max-width: 600px) {
+            .status-search { grid-template-columns: 1fr; }
+            .status-card { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="logo" aria-label="GangaRide home">
+            <span>GangaRide</span>
+            <small>Varanasi Tours</small>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#packages">Boat Packages</a>
+            <a href="../index.html#booking">Booking</a>
+            <a href="../index.html#cab-booking">Cab</a>
+            <a href="../index.html#hotel-booking">Hotels</a>
+            <a href="booking-status.html">Booking Status</a>
+        </nav>
+    </header>
+
+    <main class="status-page">
+        <div class="status-container">
+            <div class="status-card">
+                <h1>Check Booking Status</h1>
+                <p style="color: var(--muted);">Enter your Ticket ID and mobile number to view your booking status.</p>
+                
+                <div class="status-search">
+                    <input type="text" id="ticketId" placeholder="Ticket ID (e.g., BK2026-0001)" autocomplete="off">
+                    <input type="tel" id="phone" placeholder="Mobile Number (e.g., 9876543210)" autocomplete="tel">
+                    <button onclick="checkStatus()">Check Status</button>
+                </div>
+
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p style="color: var(--muted); margin-top: 1rem;">Checking your booking...</p>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <div class="status-result" id="statusResult">
+                    <div class="status-summary" id="statusSummary"></div>
+                    
+                    <h3 style="margin: 1rem 0 0.5rem;">Booking Timeline</h3>
+                    <div class="status-timeline" id="timeline"></div>
+
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: var(--river-soft); border-radius: 12px;">
+                        <h4 style="margin: 0 0 0.5rem; color: var(--river-dark);">Need Help?</h4>
+                        <p style="margin: 0; font-size: 0.9rem;">
+                            <a href="https://wa.me/919170409773" target="_blank" style="color: var(--leaf); font-weight: 900;">WhatsApp Us</a> 
+                            or call <a href="tel:+919170409773" style="color: var(--river-dark); font-weight: 900;">+91 9170409773</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <a href="../index.html" class="footer-brand">GangaRide</a>
+            <p>Premium boat booking, travel support, hotel booking and local tours in Varanasi.</p>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="../index.html#packages">Boat Packages</a>
+            <a href="../index.html#booking">Book Now</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <a href="tel:+919170409773">+91 9170409773</a>
+            <a href="https://wa.me/919170409773" target="_blank">WhatsApp</a>
+            <span>Dashashwamedh Ghat, Varanasi</span>
+        </div>
+        <p class="copyright">Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/firebase-config.js"></script>
+    <script>
+        function checkStatus() {
+            const ticketId = document.getElementById('ticketId').value.trim().toUpperCase();
+            const phone = document.getElementById('phone').value.trim();
+            const result = document.getElementById('statusResult');
+            const errorEl = document.getElementById('errorMessage');
+            const spinner = document.getElementById('loadingSpinner');
+            
+            errorEl.classList.remove('is-visible');
+            result.classList.remove('is-visible');
+            
+            if (!ticketId || !phone) {
+                errorEl.textContent = 'Please enter both Ticket ID and Mobile Number.';
+                errorEl.classList.add('is-visible');
+                return;
+            }
+            
+            spinner.classList.add('is-visible');
+            
+            setTimeout(() => {
+                spinner.classList.remove('is-visible');
+                
+                const booking = DB.getBookingByTicketAndPhone(ticketId, phone);
+                
+                if (!booking) {
+                    errorEl.textContent = 'No booking found. Please check your Ticket ID and Mobile Number.';
+                    errorEl.classList.add('is-visible');
+                    return;
+                }
+                
+                displayStatus(booking);
+                result.classList.add('is-visible');
+            }, 800);
+        }
+        
+        function displayStatus(booking) {
+            // Summary
+            const summary = document.getElementById('statusSummary');
+            const statusColors = { pending: '#fff3cd', confirmed: '#d4edda', rejected: '#f8d7da', completed: '#cce5ff' };
+            const statusBg = statusColors[booking.status] || '#fff3cd';
+            
+            summary.innerHTML = `
+                <div class="status-summary-item">
+                    <div class="label">Ticket ID</div>
+                    <div class="value" style="font-size: 1rem;">${booking.ticketId}</div>
+                </div>
+                <div class="status-summary-item">
+                    <div class="label">Service</div>
+                    <div class="value">${booking.service || booking.tour || '-'}</div>
+                </div>
+                <div class="status-summary-item">
+                    <div class="label">Date</div>
+                    <div class="value">${booking.date || '-'}</div>
+                </div>
+                <div class="status-summary-item">
+                    <div class="label">Status</div>
+                    <div class="value" style="background: ${statusBg}; padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; font-size: 0.9rem;">${(booking.status || 'pending').toUpperCase()}</div>
+                </div>
+            `;
+            
+            // Timeline
+            const timeline = document.getElementById('timeline');
+            const statusOrder = ['pending', 'confirmed', 'rejected', 'completed'];
+            const currentIndex = statusOrder.indexOf(booking.status);
+            
+            const steps = [
+                { key: 'pending', label: 'Booking Submitted', icon: '📝', desc: 'Your booking request has been received.' },
+                { key: 'confirmed', label: 'Confirmed', icon: '✅', desc: booking.status === 'confirmed' || booking.status === 'completed' ? 'Your booking has been approved.' : 'Awaiting confirmation.' },
+                { key: 'rejected', label: 'Rejected', icon: '❌', desc: booking.status === 'rejected' ? 'Your booking was not approved.' : 'N/A' },
+                { key: 'completed', label: 'Completed', icon: '🎉', desc: booking.status === 'completed' ? 'Your trip/service has been completed.' : 'Pending completion.' }
+            ];
+            
+            timeline.innerHTML = steps.map((step, i) => {
+                let statusClass = 'step-pending';
+                const stepIndex = statusOrder.indexOf(step.key);
+                
+                if (booking.status === 'rejected' && step.key === 'rejected') {
+                    statusClass = 'step-rejected';
+                } else if (booking.status === 'rejected' && stepIndex < currentIndex) {
+                    statusClass = 'step-active';
+                } else if (stepIndex <= currentIndex && booking.status !== 'rejected') {
+                    statusClass = 'step-active';
+                } else if (booking.status === 'rejected' && step.key !== 'rejected' && stepIndex < 2) {
+                    statusClass = 'step-active';
+                }
+                
+                // Hide rejected step if not rejected
+                if (step.key === 'rejected' && booking.status !== 'rejected') {
+                    return '';
+                }
+                
+                // Hide the conflicting step
+                if (booking.status === 'rejected' && step.key === 'confirmed') return '';
+                if (booking.status === 'confirmed' && step.key === 'rejected') return '';
+                
+                return `
+                    <div class="timeline-item">
+                        <div class="step-icon ${statusClass}">${step.icon}</div>
+                        <div>
+                            <strong>${step.label}</strong>
+                            <p style="margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--muted);">${step.desc}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Enter key support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') checkStatus();
+        });
+    </script>
+</body>
+</html>

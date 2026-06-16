@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed - GangaRide | Kashi Ganga Boat Tours</title>
+    <meta name="description" content="Your booking is confirmed with GangaRide. View your ticket details and download your booking confirmation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .confirmation-page { min-height: 80vh; display: grid; place-items: center; padding: 6rem 6vw; }
+        .confirmation-card { max-width: 700px; width: 100%; padding: 2.5rem; background: var(--white); border-radius: 24px; box-shadow: var(--shadow); text-align: center; }
+        .confirmation-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .confirmation-card h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--leaf); margin: 0; }
+        .ticket-display { margin: 1.5rem 0; padding: 1.5rem; background: var(--river-soft); border-radius: 16px; border: 2px dashed var(--river); }
+        .ticket-display .ticket-label { font-size: 0.8rem; text-transform: uppercase; color: var(--muted); font-weight: 800; letter-spacing: 1px; }
+        .ticket-display .ticket-id { font-size: 2rem; font-weight: 900; color: var(--river-dark); letter-spacing: 1px; margin: 0.3rem 0; }
+        .ticket-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; margin: 1.5rem 0; padding: 1.5rem; background: var(--mist); border-radius: 12px; }
+        .ticket-detail-item { display: grid; gap: 0.2rem; }
+        .ticket-detail-item .label { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); font-weight: 800; letter-spacing: 0.5px; }
+        .ticket-detail-item .value { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+        .status-badge { display: inline-flex; padding: 0.4rem 1.2rem; border-radius: 999px; font-size: 0.85rem; font-weight: 900; text-transform: uppercase; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #d4edda; color: #155724; }
+        .confirmation-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1.5rem; }
+        @media (max-width: 600px) {
+            .confirmation-card { padding: 1.5rem; }
+            .ticket-details-grid { grid-template-columns: 1fr; }
+            .ticket-display .ticket-id { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="logo" aria-label="GangaRide home">
+            <span>GangaRide</span>
+            <small>Varanasi Tours</small>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#packages">Boat Packages</a>
+            <a href="../index.html#booking">Booking</a>
+            <a href="../index.html#cab-booking">Cab</a>
+            <a href="../index.html#hotel-booking">Hotels</a>
+            <a href="booking-status.html">Booking Status</a>
+        </nav>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="confirmation-card" id="confirmationCard">
+            <div class="confirmation-icon">🎉</div>
+            <h1>Booking Submitted!</h1>
+            <p style="color: var(--muted); margin-top: 0.5rem;">Your booking request has been received successfully.</p>
+            
+            <div class="ticket-display">
+                <div class="ticket-label">Your Ticket ID</div>
+                <div class="ticket-id" id="ticketIdDisplay">BK2026-XXXX</div>
+                <span class="status-badge status-pending" id="statusBadge">Pending</span>
+            </div>
+
+            <div class="ticket-details-grid" id="ticketDetails">
+                <div class="ticket-detail-item"><span class="label">Name</span><span class="value" id="detailName">-</span></div>
+                <div class="ticket-detail-item"><span class="label">Service</span><span class="value" id="detailService">-</span></div>
+                <div class="ticket-detail-item"><span class="label">Date</span><span class="value" id="detailDate">-</span></div>
+                <div class="ticket-detail-item"><span class="label">Time</span><span class="value" id="detailTime">-</span></div>
+                <div class="ticket-detail-item"><span class="label">Guests</span><span class="value" id="detailGuests">-</span></div>
+                <div class="ticket-detail-item"><span class="label">Amount</span><span class="value" id="detailAmount">-</span></div>
+            </div>
+
+            <p style="color: var(--muted); font-size: 0.9rem; margin: 1rem 0 0;">
+                A confirmation message has been sent to your WhatsApp number. 
+                Our team will review your booking shortly.
+            </p>
+
+            <div class="confirmation-actions">
+                <a href="booking-status.html" class="button primary">Check Status</a>
+                <a href="../index.html" class="button secondary" style="border-color: var(--river); color: var(--river);">Back to Home</a>
+                <a href="https://wa.me/919170409773" target="_blank" class="button glass" style="background: var(--whatsapp);">Contact Support</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <a href="../index.html" class="footer-brand">GangaRide</a>
+            <p>Premium boat booking, travel support, hotel booking and local tours in Varanasi.</p>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <a href="../index.html#packages">Boat Packages</a>
+            <a href="booking-status.html">Booking Status</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <a href="tel:+919170409773">+91 9170409773</a>
+            <a href="https://wa.me/919170409773" target="_blank">WhatsApp</a>
+            <span>Dashashwamedh Ghat, Varanasi</span>
+        </div>
+        <p class="copyright">Copyright 2026 Kashi Ganga Boat Tours. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/firebase-config.js"></script>
+    <script>
+        // Load booking from sessionStorage
+        const bookingData = sessionStorage.getItem('lastBooking');
+        if (bookingData) {
+            const booking = JSON.parse(bookingData);
+            document.getElementById('ticketIdDisplay').textContent = booking.ticketId || 'BK2026-XXXX';
+            document.getElementById('detailName').textContent = booking.name || '-';
+            document.getElementById('detailService').textContent = booking.service || '-';
+            document.getElementById('detailDate').textContent = booking.date || '-';
+            document.getElementById('detailTime').textContent = booking.time || '-';
+            document.getElementById('detailGuests').textContent = `${booking.adults || 0} Adults, ${booking.children || 0} Children, ${booking.infants || 0} Infants`;
+            document.getElementById('detailAmount').textContent = `₹${(booking.cost || 0).toLocaleString('en-IN')}`;
+            
+            const status = booking.status || 'pending';
+            const badge = document.getElementById('statusBadge');
+            badge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+            badge.className = `status-badge status-${status}`;
+        }
+    </script>
+</body>
+</html>
